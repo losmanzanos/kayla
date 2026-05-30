@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariposa Mental Wellness — Kayla Martinez, LPC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --olive: #7C6A0A;
+  --sage: #BABD8D;
+  --blush: #FFDAC6;
+  --amber: #FA9500;
+  --burnt: #EB6424;
+  --cream: #FAF6F1;
+  --dark: #2C2416;
+  --mid: #6B5E45;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; background:var(--cream); color:var(--dark); font-weight:300; }
+
+/* ── BUTTERFLY SVG (reusable) ── */
+.butterfly-svg { display:inline-block; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 60px;
+  background:rgba(250,246,241,0.95); backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(124,106,10,0.1);
+  transition: padding 0.3s;
+}
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.nav-logo-text { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; color:var(--olive); letter-spacing:0.03em; line-height:1.2; }
+.nav-logo-text span { display:block; font-family:'Jost',sans-serif; font-size:0.58rem; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:var(--mid); }
+.nav-links { display:flex; gap:36px; list-style:none; align-items:center; }
+.nav-links a { text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); transition:color 0.2s; }
+.nav-links a:hover { color:var(--burnt); }
+.nav-cta { background:var(--burnt)!important; color:white!important; padding:10px 22px; border-radius:2px; }
+.nav-cta:hover { background:var(--olive)!important; color:white!important; }
+
+/* hamburger */
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span { display:block; width:24px; height:1.5px; background:var(--dark); transition:all 0.3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display:none; position:fixed; top:65px; left:0; right:0; bottom:0; z-index:190;
+  background:var(--cream); flex-direction:column; align-items:center; justify-content:center;
+  gap:32px;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--dark); text-decoration:none; letter-spacing:0.04em; }
+.mobile-menu a:hover { color:var(--burnt); }
+.mobile-menu .m-cta { background:var(--burnt); color:white; padding:14px 40px; font-size:0.85rem; font-family:'Jost',sans-serif; letter-spacing:0.14em; text-transform:uppercase; border-radius:2px; }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  background:
+    linear-gradient(to bottom, rgba(44,36,22,0.15) 0%, rgba(44,36,22,0.3) 40%, rgba(44,36,22,0.72) 100%),
+    url('images/hero.jpg') center/cover no-repeat;
+  display:flex; align-items:flex-end;
+  padding:0 60px 90px;
+}
+.hero-inner { display:grid; grid-template-columns:1fr 1fr; align-items:flex-end; gap:60px; width:100%; max-width:1200px; margin:0 auto; }
+.hero-headline { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5vw,4.8rem); font-weight:300; color:white; line-height:1.08; text-shadow:0 2px 20px rgba(44,36,22,0.5); }
+.hero-headline em { font-style:italic; color:var(--blush); }
+.hero-right { display:flex; flex-direction:column; gap:20px; padding-left:40px; border-left:1px solid rgba(255,218,198,0.5); }
+.hero-right p { color:rgba(255,255,255,0.95); font-size:1rem; line-height:1.75; text-shadow:0 1px 8px rgba(44,36,22,0.4); }
+.btn-primary { display:inline-block; background:var(--burnt); color:white; text-decoration:none; padding:15px 34px; font-size:0.73rem; letter-spacing:0.16em; text-transform:uppercase; border-radius:2px; align-self:flex-start; transition:background 0.25s,transform 0.2s; border:none; cursor:pointer; font-family:'Jost',sans-serif; }
+.btn-primary:hover { background:var(--amber); transform:translateY(-1px); }
+.btn-outline { display:inline-block; border:1px solid var(--burnt); color:var(--burnt); text-decoration:none; padding:13px 30px; font-size:0.73rem; letter-spacing:0.16em; text-transform:uppercase; border-radius:2px; transition:all 0.25s; }
+.btn-outline:hover { background:var(--burnt); color:white; }
+
+/* ── STRIP ── */
+.strip { background:var(--olive); color:white; text-align:center; padding:16px 60px; font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; }
+.strip a { color:var(--blush); text-decoration:none; }
+
+/* ── SECTIONS ── */
+.section { padding:100px 60px; max-width:1200px; margin:0 auto; }
+.eyebrow { font-size:0.67rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--burnt); margin-bottom:14px; font-weight:500; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:400; line-height:1.15; color:var(--dark); margin-bottom:22px; }
+.section-title em { font-style:italic; color:var(--olive); }
+.body-text { font-size:0.97rem; line-height:1.85; color:var(--mid); margin-bottom:18px; }
+
+/* ── ABOUT ── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.about-img { position:relative; }
+.about-img img { width:100%; height:520px; object-fit:cover; border-radius:2px; }
+.about-img-accent { position:absolute; bottom:-22px; right:-22px; width:160px; height:160px; background:var(--blush); border-radius:2px; z-index:-1; }
+.about-img-badge { position:absolute; top:28px; right:-18px; background:var(--burnt); color:white; padding:18px 22px; font-family:'Cormorant Garamond',serif; font-size:0.88rem; text-align:center; line-height:1.5; max-width:150px; }
+
+/* ── STORY ── */
+.story-section { background:var(--dark); padding:100px 60px; text-align:center; }
+.story-inner { max-width:720px; margin:0 auto; }
+.story-section .eyebrow { color:var(--blush); }
+.story-section .section-title { color:white; font-size:clamp(2rem,3.8vw,3.2rem); margin-bottom:28px; }
+.story-section .section-title em { color:var(--amber); }
+.story-section .body-text { color:rgba(255,255,255,0.7); }
+.story-butterfly { margin-bottom:28px; }
+
+/* ── SERVICES ── */
+.services-section { padding:100px 60px; background:var(--blush); }
+.services-inner { max-width:1200px; margin:0 auto; }
+.services-header { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:52px; }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.service-card { background:white; padding:40px 32px; transition:background 0.25s; }
+.service-card:hover { background:var(--sage); }
+.service-icon { width:36px; height:36px; margin-bottom:18px; opacity:0.7; }
+.service-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:500; color:var(--dark); margin-bottom:10px; }
+.service-card p { font-size:0.88rem; line-height:1.75; color:var(--mid); }
+
+/* ── MOTHERS ── */
+.niche-section { padding:100px 60px; background:linear-gradient(135deg,var(--olive) 0%,#5a4d07 100%); }
+.niche-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.niche-section .eyebrow { color:var(--amber); }
+.niche-section .section-title { color:white; }
+.niche-section .section-title em { color:var(--blush); }
+.niche-section .body-text { color:rgba(255,255,255,0.75); }
+.niche-checklist { list-style:none; margin:22px 0 34px; }
+.niche-checklist li { color:rgba(255,255,255,0.85); font-size:0.93rem; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; gap:12px; }
+.niche-checklist li::before { content:'→'; color:var(--amber); font-size:0.82rem; flex-shrink:0; }
+.niche-img img { width:100%; height:500px; object-fit:cover; object-position:center top; border-radius:2px; }
+
+/* ── APPROACH ── */
+.approach-section { padding:100px 60px; max-width:1200px; margin:0 auto; }
+.approach-grid { display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:start; }
+.approach-sticky { position:sticky; top:100px; }
+.modality-list { list-style:none; margin-top:36px; }
+.modality-item { padding:26px 0; border-bottom:1px solid rgba(124,106,10,0.15); }
+.modality-item:first-child { border-top:1px solid rgba(124,106,10,0.15); }
+.modality-num { font-family:'Cormorant Garamond',serif; font-size:0.78rem; color:var(--burnt); letter-spacing:0.1em; margin-bottom:5px; }
+.modality-item h4 { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:500; color:var(--dark); margin-bottom:7px; }
+.modality-item p { font-size:0.87rem; line-height:1.75; color:var(--mid); }
+
+/* ── KAYLA ── */
+.kayla-section { padding:100px 60px; background:var(--sage); }
+.kayla-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:360px 1fr; gap:80px; align-items:center; }
+.kayla-photo { position:relative; }
+.kayla-photo img { width:100%; height:500px; object-fit:cover; object-position:center 15%; border-radius:2px; }
+.kayla-credentials { position:absolute; bottom:-18px; left:-18px; background:var(--dark); color:white; padding:20px 24px; font-size:0.78rem; line-height:1.6; }
+.kayla-credentials strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:400; margin-bottom:3px; }
+.kayla-section .section-title { color:var(--dark); }
+.kayla-section .body-text { color:#4a4030; }
+.kayla-section .eyebrow { color:var(--burnt); }
+.kayla-quote { margin:28px 0; padding:26px 32px; background:white; border-left:3px solid var(--burnt); }
+.kayla-quote p { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:var(--dark); line-height:1.6; }
+
+/* ── PROCESS ── */
+.process-section { padding:100px 60px; background:var(--cream); }
+.process-inner { max-width:1200px; margin:0 auto; }
+.process-header { text-align:center; margin-bottom:56px; }
+.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.process-step { background:white; padding:40px 28px; }
+.step-num { font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:300; color:var(--blush); line-height:1; margin-bottom:14px; }
+.process-step h4 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:500; color:var(--dark); margin-bottom:10px; }
+.process-step p { font-size:0.87rem; line-height:1.75; color:var(--mid); }
+
+/* ── INSTAGRAM ── */
+.instagram-section { padding:100px 60px; background:var(--cream); }
+.instagram-inner { max-width:1200px; margin:0 auto; }
+.instagram-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:36px; }
+.instagram-header a { color:var(--burnt); text-decoration:none; font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; border-bottom:1px solid var(--burnt); padding-bottom:2px; }
+.instagram-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:4px; }
+.insta-tile { aspect-ratio:1; overflow:hidden; position:relative; background:var(--sage); }
+.insta-tile img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block; }
+.insta-tile:hover img { transform:scale(1.06); }
+.insta-overlay { position:absolute; inset:0; background:rgba(124,106,10,0.6); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; }
+.insta-tile:hover .insta-overlay { opacity:1; }
+.insta-overlay span { color:white; font-size:1.3rem; }
+.instagram-note { margin-top:20px; text-align:center; font-size:0.8rem; color:var(--mid); }
+.instagram-note a { color:var(--burnt); text-decoration:none; font-weight:500; }
+
+/* ── FEES ── */
+.fees-section { padding:80px 60px; background:var(--olive); }
+.fees-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.fee-card { background:rgba(255,255,255,0.06); padding:44px 32px; text-align:center; }
+.fee-card:nth-child(2) { background:var(--burnt); }
+.fee-num { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--blush); line-height:1; margin-bottom:8px; }
+.fee-card h4 { font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:14px; }
+.fee-card p { font-size:0.87rem; line-height:1.7; color:rgba(255,255,255,0.72); }
+
+/* ── CONTACT ── */
+.contact-section { padding:100px 60px; background:var(--cream); }
+.contact-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+.contact-form { display:flex; flex-direction:column; gap:14px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-field { display:flex; flex-direction:column; gap:5px; }
+.form-field label { font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); }
+.form-field input, .form-field textarea, .form-field select { padding:13px 15px; border:1px solid rgba(124,106,10,0.22); background:white; font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--dark); border-radius:2px; outline:none; transition:border-color 0.2s; -webkit-appearance:none; }
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color:var(--burnt); }
+.form-field textarea { height:110px; resize:vertical; }
+.contact-info { display:flex; flex-direction:column; gap:28px; padding-top:8px; }
+.contact-detail { display:flex; gap:18px; align-items:flex-start; }
+.contact-icon { width:42px; height:42px; background:var(--blush); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.contact-detail h5 { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); margin-bottom:3px; }
+.contact-detail p, .contact-detail a { font-size:0.97rem; color:var(--dark); text-decoration:none; }
+.contact-detail a:hover { color:var(--burnt); }
+
+/* ── FOOTER ── */
+footer { background:var(--dark); color:rgba(255,255,255,0.58); padding:60px; }
+.footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; }
+.footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:white; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+footer p { font-size:0.84rem; line-height:1.75; }
+.footer-col h5 { font-size:0.63rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:18px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.footer-col a { color:rgba(255,255,255,0.58); text-decoration:none; font-size:0.87rem; transition:color 0.2s; }
+.footer-col a:hover { color:var(--amber); }
+.footer-bottom { max-width:1200px; margin:36px auto 0; padding-top:28px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; font-size:0.76rem; flex-wrap:wrap; gap:12px; }
+.footer-bottom a { color:var(--amber); text-decoration:none; }
+
+/* ── BANNER ── */
+.banner { background:var(--burnt); color:white; text-align:center; padding:11px; font-size:0.77rem; letter-spacing:0.08em; }
+.banner a { color:var(--blush); text-decoration:underline; }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+
+/* Tablet — 768px to 1024px */
+@media (max-width:1024px) {
+  nav { padding:16px 30px; }
+  .nav-links { gap:22px; }
+  .nav-links li:not(:last-child):not(:nth-last-child(2)) { display:none; }
+
+  .hero { padding:0 30px 80px; }
+  .hero-inner { grid-template-columns:1fr; gap:32px; }
+  .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:28px; }
+
+  .section { padding:80px 30px; }
+  .about-grid { grid-template-columns:1fr; gap:50px; }
+  .about-img-badge { right:12px; }
+  .about-img-accent { display:none; }
+
+  .story-section { padding:80px 30px; }
+  .services-section { padding:80px 30px; }
+  .services-header { grid-template-columns:1fr; gap:24px; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+
+  .niche-section { padding:80px 30px; }
+  .niche-inner { grid-template-columns:1fr; gap:48px; }
+  .niche-img { order:-1; }
+  .niche-img img { height:380px; }
+
+  .approach-section { padding:80px 30px; }
+  .approach-grid { grid-template-columns:1fr; gap:40px; }
+  .approach-sticky { position:static; }
+
+  .kayla-section { padding:80px 30px; }
+  .kayla-inner { grid-template-columns:1fr; gap:50px; }
+  .kayla-photo img { height:420px; object-position:center 12%; }
+  .kayla-credentials { left:12px; bottom:-14px; }
+
+  .process-section { padding:80px 30px; }
+  .process-steps { grid-template-columns:repeat(2,1fr); }
+
+  .instagram-section { padding:80px 30px; }
+  .instagram-grid { grid-template-columns:repeat(3,1fr); }
+
+  .fees-section { padding:60px 30px; }
+  .fees-inner { grid-template-columns:1fr; gap:2px; }
+
+  .contact-section { padding:80px 30px; }
+  .contact-inner { grid-template-columns:1fr; gap:60px; }
+
+  footer { padding:60px 30px; }
+  .footer-inner { grid-template-columns:1fr 1fr; gap:40px; }
+  .footer-inner > div:first-child { grid-column:1/-1; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+
+  .strip { padding:14px 20px; font-size:0.7rem; }
+}
+
+/* Mobile — below 768px */
+@media (max-width:767px) {
+  nav { padding:14px 20px; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+
+  .hero { padding:0 20px 70px; min-height:100svh; }
+  .hero-inner { grid-template-columns:1fr; gap:28px; }
+  .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
+  .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
+
+  .section { padding:70px 20px; }
+  .about-grid { grid-template-columns:1fr; gap:40px; }
+  .about-img img { height:380px; }
+  .about-img-accent { display:none; }
+  .about-img-badge { right:10px; top:18px; }
+
+  .story-section { padding:70px 20px; }
+  .services-section { padding:70px 20px; }
+  .services-header { grid-template-columns:1fr; gap:20px; }
+  .services-grid { grid-template-columns:1fr; }
+
+  .niche-section { padding:70px 20px; }
+  .niche-inner { grid-template-columns:1fr; gap:40px; }
+  .niche-img { order:-1; }
+  .niche-img img { height:300px; }
+
+  .approach-section { padding:70px 20px; }
+  .approach-grid { grid-template-columns:1fr; }
+  .approach-sticky { position:static; }
+
+  .kayla-section { padding:70px 20px; }
+  .kayla-inner { grid-template-columns:1fr; gap:48px; }
+  .kayla-photo img { height:400px; object-position:center 10%; }
+  .kayla-credentials { font-size:0.72rem; left:10px; bottom:-12px; padding:14px 18px; }
+
+  .process-section { padding:70px 20px; }
+  .process-steps { grid-template-columns:1fr; }
+
+  .instagram-section { padding:70px 20px; }
+  .instagram-grid { grid-template-columns:repeat(3,1fr); }
+  .instagram-header { flex-direction:column; align-items:flex-start; gap:14px; }
+
+  .fees-section { padding:60px 20px; }
+  .fees-inner { grid-template-columns:1fr; gap:2px; }
+
+  .contact-section { padding:70px 20px; }
+  .contact-inner { grid-template-columns:1fr; gap:50px; }
+  .form-row { grid-template-columns:1fr; }
+
+  footer { padding:50px 20px; }
+  .footer-inner { grid-template-columns:1fr; gap:36px; }
+  .footer-bottom { flex-direction:column; text-align:center; gap:8px; }
+
+  .strip { padding:12px 16px; font-size:0.66rem; letter-spacing:0.08em; }
+  .banner { font-size:0.72rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement Banner -->
+<div class="banner">
+  Now accepting new self-pay clients — <a href="#contact">Book your free 15-min consultation →</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <!-- Monarch/black outline butterfly -->
+    <svg width="32" height="24" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Left upper wing -->
+      <path d="M32 24 C29 17 22 8 13 5 C7 3 2 6 2 12 C2 18 10 23 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Left lower wing -->
+      <path d="M32 24 C25 28 15 36 13 43 C11 48 17 49 22 45 C27 41 31 33 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Right upper wing -->
+      <path d="M32 24 C35 17 42 8 51 5 C57 3 62 6 62 12 C62 18 54 23 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Right lower wing -->
+      <path d="M32 24 C39 28 49 36 51 43 C53 48 47 49 42 45 C37 41 33 33 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Body -->
+      <ellipse cx="32" cy="24" rx="2" ry="10" fill="#7C6A0A"/>
+      <!-- Antennae -->
+      <path d="M31 14 C29 9 25 5 22 2" stroke="#7C6A0A" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M33 14 C35 9 39 5 42 2" stroke="#7C6A0A" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="22" cy="2" r="2" fill="#7C6A0A"/>
+      <circle cx="42" cy="2" r="2" fill="#7C6A0A"/>
+    </svg>
+    <div class="nav-logo-text">
+      Mariposa Mental Wellness
+      <span>Kayla Martinez, MS, LPC</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#mothers">For Mothers</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#approach" onclick="toggleMenu()">Approach</a>
+  <a href="#mothers" onclick="toggleMenu()">For Mothers</a>
+  <a href="#fees" onclick="toggleMenu()">Fees</a>
+  <a href="#contact" class="m-cta" onclick="toggleMenu()">Book a Consultation</a>
+</div>
+
+<!-- Hero — warm golden sunlight through leaves, safe & grounding -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <h1 class="hero-headline reveal">
+      You're not lost.<br>
+      You're in the <em>in-between.</em>
+    </h1>
+    <div class="hero-right reveal">
+      <p>There's a phase before the butterfly — not caterpillar, not yet wings. That tender, uncertain middle is where transformation actually lives. Mariposa is here for that part of your journey.</p>
+      <a href="#contact" class="btn-primary">Begin Your Journey</a>
+    </div>
+  </div>
+</section>
+
+<!-- Strip -->
+<div class="strip">
+  Now accepting self-pay clients &nbsp;·&nbsp; Mesa, AZ + Virtual &nbsp;·&nbsp;
+  <a href="tel:+14806050846">(480) 605-0846</a> &nbsp;·&nbsp; Free 15-min consultation
+</div>
+
+<!-- About — nature image, no duplicate of Kayla's headshot -->
+<section id="about">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="images/about-room.jpg"
+             alt="Warm welcoming therapy space — Mariposa Mental Wellness">
+        <div class="about-img-accent"></div>
+        <div class="about-img-badge">
+          Trauma-Informed &amp; Compassion-Led
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Welcome</p>
+        <h2 class="section-title">A space where you're allowed to <em>not have it all together</em></h2>
+        <p class="body-text">Opening up in therapy takes courage, and I deeply respect the trust it requires. I see my role not as an authority but as a guide — helping you reconnect with your own wisdom and resilience.</p>
+        <p class="body-text">My approach is relational, compassionate, and rooted in IFS and trauma-informed care. Together, we'll explore what's beneath the surface, make sense of patterns, and build the self-trust needed to create lasting change.</p>
+        <a href="#about-kayla" class="btn-outline" style="margin-top:10px;">Meet Kayla</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mariposa Story -->
+<section class="story-section">
+  <div class="story-inner">
+    <div class="story-butterfly reveal">
+      <svg width="52" height="38" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 24 C29 17 22 8 13 5 C7 3 2 6 2 12 C2 18 10 23 32 24 Z" fill="none" stroke="#FFDAC6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M32 24 C25 28 15 36 13 43 C11 48 17 49 22 45 C27 41 31 33 32 24 Z" fill="none" stroke="#FFDAC6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M32 24 C35 17 42 8 51 5 C57 3 62 6 62 12 C62 18 54 23 32 24 Z" fill="none" stroke="#FFDAC6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M32 24 C39 28 49 36 51 43 C53 48 47 49 42 45 C37 41 33 33 32 24 Z" fill="none" stroke="#FFDAC6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="32" cy="24" rx="2" ry="10" fill="#FFDAC6"/>
+        <path d="M31 14 C29 9 25 5 22 2" stroke="#FFDAC6" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M33 14 C35 9 39 5 42 2" stroke="#FFDAC6" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="22" cy="2" r="1.8" fill="#FFDAC6"/>
+        <circle cx="42" cy="2" r="1.8" fill="#FFDAC6"/>
+      </svg>
+    </div>
+    <p class="eyebrow">The Mariposa Story</p>
+    <h2 class="section-title reveal">Before the butterfly,<br>there is <em>the cocoon</em></h2>
+    <p class="body-text reveal">Mariposa is Spanish for butterfly — but the name isn't about the transformation you can see. It's about the one you can't. That quiet, disorienting in-between: when the old version of you no longer fits, and the new one isn't fully formed yet.</p>
+    <p class="body-text reveal">If you're here, you might be in that space. Not broken — becoming. This practice was built for exactly that kind of courage.</p>
+  </div>
+</section>
+
+<!-- Services — SVG line icons, no emojis -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="reveal">
+        <p class="eyebrow">What We Work Through</p>
+        <h2 class="section-title">Therapy that <em>meets you</em><br>where you are</h2>
+      </div>
+      <p class="body-text reveal">Whether you're navigating trauma, perfectionism, anxiety, or the quiet weight of always being the strong one — you deserve a space where all of it is welcome.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Shield with heart — safety & healing -->
+          <path d="M18 4 L28 8 L28 18 C28 24 23 29 18 32 C13 29 8 24 8 18 L8 8 Z"/>
+          <path d="M13.5 17 C13.5 14.5 15.2 13 17 14.5 C18.8 13 20.5 14.5 20.5 17 C20.5 19 18 21.5 17 22.5 C16 21.5 13.5 19 13.5 17 Z"/>
+        </svg>
+        <h3>Trauma &amp; PTSD</h3>
+        <p>Healing from complex trauma, PTSD, and CPTSD using evidence-based modalities in a safe, paced environment.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round">
+          <circle cx="18" cy="18" r="12"/>
+          <path d="M18 10 L18 18 L24 21"/>
+          <circle cx="18" cy="18" r="2" fill="#7C6A0A"/>
+        </svg>
+        <h3>Anxiety &amp; Perfectionism</h3>
+        <p>Understanding the parts of you that drive perfectionism, people-pleasing, and fawning — and giving them new roles.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round">
+          <path d="M18 6 C12 6 7 11 7 17 C7 20 8.5 22.5 10.5 24.5 L10 30 L15.5 27 C16.3 27.2 17.1 27.3 18 27.3 C24 27.3 29 22.5 29 17 C29 11 24 6 18 6Z"/>
+          <path d="M13 17 L17 21 L23 13"/>
+        </svg>
+        <h3>Depression &amp; Self-Worth</h3>
+        <p>Rebuilding a sense of self, purpose, and worthiness when depression has made those things feel out of reach.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Venus symbol — female identity & empowerment -->
+          <circle cx="18" cy="13" r="9"/>
+          <line x1="18" y1="22" x2="18" y2="32"/>
+          <line x1="13" y1="27" x2="23" y2="27"/>
+        </svg>
+        <h3>Women's Issues</h3>
+        <p>Specializing in the unique experiences of women — identity, relationships, roles, and reclaiming yourself.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round">
+          <path d="M6 28 C6 20 10 14 18 10 C26 14 30 20 30 28"/>
+          <path d="M18 10 L18 4"/>
+          <path d="M14 6 C14 6 16 8 18 8 C20 8 22 6 22 6"/>
+        </svg>
+        <h3>Life Transitions</h3>
+        <p>Navigating the in-between moments — grief, identity shifts, relationship changes, and finding your footing.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="#7C6A0A" stroke-width="1.4" stroke-linecap="round">
+          <circle cx="12" cy="13" r="4"/>
+          <circle cx="24" cy="13" r="4"/>
+          <path d="M4 30 C4 25 7.5 22 12 22"/>
+          <path d="M32 30 C32 25 28.5 22 24 22"/>
+          <path d="M12 22 C12 22 15 26 18 26 C21 26 24 22 24 22"/>
+        </svg>
+        <h3>Family &amp; Relationships</h3>
+        <p>Exploring family of origin patterns, codependency, and how your earliest attachments show up in your life today.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Mothers Niche -->
+<section class="niche-section" id="mothers">
+  <div class="niche-inner">
+    <div class="reveal">
+      <p class="eyebrow">A Special Focus</p>
+      <h2 class="section-title">For the mother who's<br>lost herself <em>in the giving</em></h2>
+      <p class="body-text">You've spent years being everything to everyone. The caretaker. The one who holds it all together. Maybe you stepped into that role long before you became a mother — as the eldest daughter, the responsible one, the child who kept the family steady.</p>
+      <p class="body-text">Now you're burning out, and the guilt of admitting that feels like one more thing to carry. This is a space built for you.</p>
+      <ul class="niche-checklist">
+        <li>Burnout and emotional exhaustion in motherhood</li>
+        <li>Eldest / oldest daughter syndrome</li>
+        <li>Loss of identity beyond caregiving roles</li>
+        <li>Postpartum anxiety and depression</li>
+        <li>Breaking generational patterns</li>
+        <li>Reclaiming your sense of self</li>
+      </ul>
+      <a href="#contact" class="btn-primary">You deserve support too</a>
+    </div>
+    <div class="niche-img reveal">
+      <img src="images/mother.png"
+           alt="Support for mothers in therapy — Mariposa Mental Wellness">
+    </div>
+  </div>
+</section>
+
+<!-- Approach -->
+<section id="approach" style="background:var(--cream);">
+  <div class="approach-section">
+    <div class="approach-grid">
+      <div class="approach-sticky">
+        <p class="eyebrow reveal">How We Work</p>
+        <h2 class="section-title reveal">Rooted in<br><em>evidence,</em><br>guided by<br>compassion</h2>
+        <p class="body-text reveal">Every modality is chosen with intention — and adapted to meet you where you are, not where a textbook says you should be.</p>
+      </div>
+      <ul class="modality-list">
+        <li class="modality-item reveal">
+          <div class="modality-num">01</div>
+          <h4>Internal Family Systems (IFS)</h4>
+          <p>The core of my work. IFS helps us get curious about the different "parts" of you — the protectors, the inner critic, the exhausted caregiver — with compassion instead of judgment. When parts feel understood, they stop working against you.</p>
+        </li>
+        <li class="modality-item reveal">
+          <div class="modality-num">02</div>
+          <h4>EMDR</h4>
+          <p>Eye Movement Desensitization and Reprocessing helps the brain process traumatic memories that feel "stuck" — reducing their emotional charge so they can be integrated rather than avoided.</p>
+        </li>
+        <li class="modality-item reveal">
+          <div class="modality-num">03</div>
+          <h4>Somatic Therapy</h4>
+          <p>Trauma lives in the body. Somatic approaches help you notice and work with physical sensations, bringing the nervous system into the healing process alongside the mind.</p>
+        </li>
+        <li class="modality-item reveal">
+          <div class="modality-num">04</div>
+          <h4>DBT &amp; Coping Skills</h4>
+          <p>Practical tools for managing overwhelming emotions, improving relationships, and building distress tolerance — especially useful when things feel most intense.</p>
+        </li>
+        <li class="modality-item reveal">
+          <div class="modality-num">05</div>
+          <h4>Attachment-Based &amp; Relational</h4>
+          <p>Exploring how your earliest relationships shaped your nervous system and your sense of worthiness — and building something more secure from here.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Meet Kayla -->
+<section class="kayla-section" id="about-kayla">
+  <div class="kayla-inner">
+    <div class="kayla-photo reveal">
+      <img src="images/kayla.png"
+           alt="Kayla Martinez, MS, LPC — Mariposa Mental Wellness">
+      <div class="kayla-credentials">
+        <strong>Kayla Martinez</strong>
+        MS, LPC · Licensed in Arizona<br>
+        LPC-24196 · 6 Years in Practice
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">Meet Your Therapist</p>
+      <h2 class="section-title">Hi, I'm Kayla</h2>
+      <p class="body-text">I became a therapist because I believe every person carries wisdom they haven't fully met yet. My job isn't to fix you — it's to help you find your own way back to yourself.</p>
+      <div class="kayla-quote">
+        <p>"I primarily use IFS because I've found that most symptoms can be addressed by getting to know the part of you that's showing up — then giving that part new skills to help you cope with challenging emotions and situations."</p>
+      </div>
+      <p class="body-text">I specialize in working with women navigating anxiety, perfectionism, trauma, and the kind of exhaustion that comes from spending too long taking care of everyone else. Whether we're processing the past, strengthening coping skills, or rebuilding self-trust — my goal is to create a space where you feel understood and empowered.</p>
+      <p class="body-text">I offer both in-person sessions in Mesa, AZ and virtual therapy throughout Arizona, with flexible weekday and evening availability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <p class="eyebrow">Getting Started</p>
+      <h2 class="section-title">What to expect</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h4>Free Consultation</h4>
+        <p>A 15-minute call to see if we're a good fit. No pressure, no commitment — just a conversation.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <h4>First Session</h4>
+        <p>We get to know each other. You share what brought you here; I share how we might work together.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <h4>Ongoing Work</h4>
+        <p>Weekly or bi-weekly sessions tailored to your needs — in-person or virtual, evenings available.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <h4>Real Change</h4>
+        <p>Not overnight, but real. You'll start to notice shifts — inside and in how you move through the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="instagram-section" id="instagram">
+  <div class="instagram-inner">
+    <div class="instagram-header">
+      <div class="reveal">
+        <p class="eyebrow">Follow Along</p>
+        <h2 class="section-title" style="font-size:clamp(1.6rem,2.8vw,2.2rem); margin-bottom:0;">@mariposamentalwellness</h2>
+      </div>
+      <a href="https://www.instagram.com/mariposamentalwellness" target="_blank" class="reveal">View on Instagram →</a>
+    </div>
+    <div class="instagram-grid reveal">
+      <div class="insta-tile"><img src="images/butterfly.jpg" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+      <div class="insta-tile"><img src="images/leaves.jpg" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+      <div class="insta-tile"><img src="images/journal.jpg" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+      <div class="insta-tile"><img src="images/path.jpg" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+      <div class="insta-tile"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400&q=80&fit=crop" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+      <div class="insta-tile"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80&fit=crop" alt="" loading="lazy"><div class="insta-overlay"><span>♡</span></div></div>
+    </div>
+    <p class="instagram-note">In the live Wix site, this section pulls directly from <a href="https://www.instagram.com/mariposamentalwellness" target="_blank">@mariposamentalwellness</a> via the native Instagram Feed widget — always current, zero manual updates.</p>
+  </div>
+</section>
+
+<!-- Fees -->
+<section class="fees-section" id="fees">
+  <div class="fees-inner">
+    <div class="fee-card reveal">
+      <div class="fee-num">$165</div>
+      <h4>Individual Session</h4>
+      <p>50-minute sessions, in-person or virtual throughout Arizona. Flexible weekday and evening availability.</p>
+    </div>
+    <div class="fee-card reveal">
+      <div class="fee-num">Free</div>
+      <h4>15-Min Consultation</h4>
+      <p>No cost, no pressure. Just a conversation to see if we're the right fit before you commit to anything.</p>
+    </div>
+    <div class="fee-card reveal">
+      <div class="fee-num">
+        <svg width="40" height="36" viewBox="0 0 40 36" fill="none" stroke="var(--blush)" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="6" width="32" height="24" rx="2"/><path d="M4 12 L36 12"/><path d="M12 6 L12 4"/><path d="M28 6 L28 4"/><path d="M10 20 L18 20"/><path d="M10 25 L22 25"/></svg>
+      </div>
+      <h4>Superbill Available</h4>
+      <p>Currently self-pay. A superbill can be provided for clients seeking out-of-network insurance reimbursement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="eyebrow">Get In Touch</p>
+      <h2 class="section-title">Ready to take<br>the <em>first step?</em></h2>
+      <p class="body-text">Reaching out is the hardest part. I'll get back to you within one business day.</p>
+      <div class="contact-info" style="margin-top:36px;">
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--burnt)" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 10.5 19.36 19.36 0 011.64 2 2 2 0 013.62 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.29 6.29l.95-.96a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.42v1.5z"/></svg>
+          </div>
+          <div><h5>Phone</h5><a href="tel:+14806050846">(480) 605-0846</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--burnt)" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><h5>In-Person</h5><p>1845 S Dobson Rd, Suite 101<br>Mesa, AZ 85202</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--burnt)" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div><h5>Virtual</h5><p>Available throughout Arizona<br>via secure telehealth platform</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--burnt)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div><h5>Hours</h5><p>Weekdays + Evenings<br>by appointment</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-field"><label>First Name</label><input type="text" placeholder="Your name"></div>
+        <div class="form-field"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="form-field"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-field"><label>Phone (optional)</label><input type="tel" placeholder="(555) 000-0000"></div>
+      <div class="form-field">
+        <label>What brings you here?</label>
+        <select>
+          <option value="">Select a topic...</option>
+          <option>Trauma / PTSD / CPTSD</option>
+          <option>Anxiety / Perfectionism</option>
+          <option>Depression / Self-Worth</option>
+          <option>Motherhood &amp; Burnout</option>
+          <option>Life Transitions</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-field"><label>Message</label><textarea placeholder="Tell me a little about what's going on and what you're looking for..."></textarea></div>
+      <button type="submit" class="btn-primary">Send Message</button>
+      <p style="font-size:0.73rem;color:var(--mid);margin-top:6px;">This form is not a crisis resource. For immediate help, call <a href="tel:988" style="color:var(--burnt);">988</a> or 911.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <svg width="22" height="16" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 24 C29 17 22 8 13 5 C7 3 2 6 2 12 C2 18 10 23 32 24 Z" fill="none" stroke="#BABD8D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M32 24 C25 28 15 36 13 43 C11 48 17 49 22 45 C27 41 31 33 32 24 Z" fill="none" stroke="#BABD8D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M32 24 C35 17 42 8 51 5 C57 3 62 6 62 12 C62 18 54 23 32 24 Z" fill="none" stroke="#BABD8D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M32 24 C39 28 49 36 51 43 C53 48 47 49 42 45 C37 41 33 33 32 24 Z" fill="none" stroke="#BABD8D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="32" cy="24" rx="2" ry="10" fill="#BABD8D"/>
+        </svg>
+        Mariposa Mental Wellness
+      </div>
+      <p>Trauma-informed therapy for women navigating anxiety, PTSD, perfectionism, and the quiet work of becoming themselves again.</p>
+      <p style="margin-top:14px;">Kayla Martinez, MS, LPC · LPC-24196<br>Licensed in Arizona</p>
+      <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" style="color:var(--amber);text-decoration:none;">@mariposamentalwellness</a></p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">My Approach</a></li>
+        <li><a href="#mothers">For Mothers</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+14806050846">(480) 605-0846</a></li>
+        <li><a href="#contact">Send a message</a></li>
+        <li><a href="#contact">Free consultation</a></li>
+      </ul>
+      <h5 style="margin-top:28px;">Location</h5>
+      <ul>
+        <li><a href="#">1845 S Dobson Rd, Ste 101</a></li>
+        <li><a href="#">Mesa, AZ 85202</a></li>
+        <li><a href="#">Virtual — All of AZ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Mariposa Mental Wellness · Kayla Martinez, MS, LPC</span>
+    <span>For emergencies call <a href="tel:988">988</a> or 911.</span>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Trigger hero reveals right away
+  setTimeout(() => {
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 200);
+</script>
+</body>
+</html>
