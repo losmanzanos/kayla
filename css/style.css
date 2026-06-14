@@ -394,7 +394,8 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .kayla-section { padding:80px 30px; }
   .kayla-inner { grid-template-columns:1fr; gap:50px; }
   .kayla-photo img { height:420px; object-position:center 12%; }
-  .kayla-credentials { left:12px; bottom:-14px; }
+  .kayla-credentials { left:0; right:0; bottom:0; border-radius:0; }
+  .kayla-inner { gap:32px; }
 
   .process-section { padding:80px 30px; }
   .process-steps { grid-template-columns:repeat(4,1fr); gap:1px; }
@@ -475,7 +476,8 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .kayla-section { padding:70px 20px; }
   .kayla-inner { grid-template-columns:1fr; gap:48px; }
   .kayla-photo img { height:400px; object-position:center 10%; }
-  .kayla-credentials { font-size:0.72rem; left:10px; bottom:-12px; padding:14px 18px; }
+  .kayla-credentials { font-size:0.72rem; left:0; right:0; bottom:0; padding:14px 18px; border-radius:0; }
+  .kayla-inner { gap:32px; }
 
   .process-section { padding:70px 20px; }
   .process-steps { grid-template-columns:repeat(2,1fr); }
@@ -511,4 +513,53 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .service-detail-grid { grid-template-columns:1fr; }
   .faq-section { padding:50px 20px; }
   .values-grid { grid-template-columns:1fr; }
+  .process-step { padding:28px 16px; }
+  .step-num { font-size:2.2rem; }
+  .service-sidebar { padding:28px 22px; }
+  .service-sidebar li { font-size:0.84rem; }
+  .ig-stat-num { font-size:2rem; }
+  .ig-topic { padding:18px 14px; }
+  .ig-topic h4 { font-size:0.92rem; }
+  .section-title { margin-bottom:18px; }
+  .modality-item { padding:22px 0; }
+  .faq-question { font-size:1.05rem; padding:18px 0; }
+  .strip { line-height:1.75; }
+  .page-hero p { font-size:0.93rem; margin-top:12px; }
+  .breadcrumb { font-size:0.62rem; margin-bottom:12px; }
+  .cta-band h2 { font-size:clamp(1.7rem,7vw,2.4rem); }
+  .cta-band p { font-size:0.93rem; }
+  .btn-primary, .btn-white { padding:14px 28px; }
+  .btn-outline { padding:12px 24px; }
+}
+
+/* ══════════════════════════════
+   MOBILE MENU BRAND
+══════════════════════════════ */
+.mobile-menu-brand {
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  padding-bottom:24px; margin-bottom:4px; width:100%; text-align:center;
+  border-bottom:1px solid rgba(124,106,10,0.12);
+}
+.mobile-menu-brand-name {
+  font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:500;
+  color:var(--olive); letter-spacing:0.04em; line-height:1.2; margin-top:8px;
+}
+.mobile-menu-brand-sub {
+  font-family:'Jost',sans-serif; font-size:0.57rem; font-weight:400;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--mid);
+}
+.mobile-menu a.active { color:var(--burnt); }
+
+/* ══════════════════════════════
+   CREDENTIALS GRID (about page)
+══════════════════════════════ */
+.cred-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+@media (max-width:767px) {
+  .cred-grid { grid-template-columns:1fr; gap:2px; }
+}
+@media (max-width:1024px) and (min-width:768px) {
+  .cred-grid { grid-template-columns:1fr 1fr; }
+  .cred-grid > div:last-child { grid-column:1/-1; }
 }
