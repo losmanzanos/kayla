@@ -177,7 +177,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .niche-checklist { list-style:none; margin:22px 0 34px; }
 .niche-checklist li { color:rgba(255,255,255,0.85); font-size:0.93rem; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; gap:12px; }
 .niche-checklist li::before { content:'→'; color:var(--amber); font-size:0.82rem; flex-shrink:0; }
-.niche-img img { width:100%; height:500px; object-fit:cover; object-position:center top; border-radius:2px; }
+.niche-img img { width:100%; height:500px; object-fit:cover; object-position:center 35%; border-radius:2px; }
 
 /* ── APPROACH ── */
 .approach-section { padding:100px 60px; max-width:1200px; margin:0 auto; }
@@ -410,7 +410,9 @@ footer p { font-size:0.84rem; line-height:1.75; }
 
   .kayla-section { padding:80px 30px; }
   .kayla-inner { grid-template-columns:1fr; gap:50px; }
-  .kayla-photo img { height:420px; object-position:center 12%; }
+  .kayla-photo img { height:420px; object-position:center 28%; }
+  .niche-img img { height:380px; object-position:center 40%; }
+  .ig-grid { max-width:420px; }
   .kayla-credentials { left:0; right:0; bottom:0; border-radius:0; }
   .kayla-inner { gap:32px; }
 
@@ -462,7 +464,7 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
 
-  .hero { padding:0 20px 70px; min-height:100svh; }
+  .hero { padding:0 20px 110px; min-height:100svh; }
   .hero-inner { grid-template-columns:1fr; gap:28px; }
   .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
   .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
@@ -492,7 +494,9 @@ footer p { font-size:0.84rem; line-height:1.75; }
 
   .kayla-section { padding:70px 20px; }
   .kayla-inner { grid-template-columns:1fr; gap:48px; }
-  .kayla-photo img { height:400px; object-position:center 10%; }
+  .kayla-photo img { height:400px; object-position:center 28%; }
+  .niche-img img { height:300px; object-position:center 40%; }
+  .niche-section { padding:60px 20px !important; }
   .kayla-credentials { font-size:0.72rem; left:0; right:0; bottom:0; padding:14px 18px; border-radius:0; }
   .kayla-inner { gap:32px; }
 
@@ -518,7 +522,8 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .contact-info-wrap { position:static; }
 
   footer { padding:50px 20px; }
-  .footer-inner { grid-template-columns:1fr; gap:36px; }
+  .footer-inner { grid-template-columns:1fr 1fr; gap:28px; }
+  .footer-inner > div:first-child { grid-column:1/-1; }
   .footer-bottom { flex-direction:column; text-align:center; gap:8px; }
 
   .strip { padding:12px 16px; font-size:0.66rem; letter-spacing:0.08em; }
