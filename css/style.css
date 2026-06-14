@@ -409,12 +409,24 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .approach-sticky { position:static; }
 
   .kayla-section { padding:80px 30px; }
-  .kayla-inner { grid-template-columns:1fr; gap:50px; }
-  .kayla-photo img { height:420px; object-position:center 28%; }
+  .kayla-inner { grid-template-columns:1fr; gap:36px; }
   .niche-img img { height:380px; object-position:center 40%; }
   .ig-grid { max-width:420px; }
-  .kayla-credentials { left:0; right:0; bottom:0; border-radius:0; }
-  .kayla-inner { gap:32px; }
+
+  /* Compact horizontal therapist card at tablet too */
+  .kayla-photo {
+    display:flex; flex-direction:row; align-items:stretch;
+    background:var(--dark); border-radius:4px; overflow:hidden;
+  }
+  .kayla-photo img {
+    width:140px; height:auto; flex-shrink:0;
+    object-fit:cover; object-position:center 18%; border-radius:0;
+  }
+  .kayla-credentials {
+    position:static; background:transparent; border-radius:0;
+    padding:22px 20px; flex:1; display:flex;
+    flex-direction:column; justify-content:center; font-size:0.82rem;
+  }
 
   .process-section { padding:80px 30px; }
   .process-steps { grid-template-columns:repeat(4,1fr); gap:1px; }
@@ -493,12 +505,25 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .approach-sticky { position:static; }
 
   .kayla-section { padding:70px 20px; }
-  .kayla-inner { grid-template-columns:1fr; gap:48px; }
-  .kayla-photo img { height:400px; object-position:center 28%; }
+  .kayla-inner { grid-template-columns:1fr; gap:36px; }
   .niche-img img { height:300px; object-position:center 40%; }
   .niche-section { padding:60px 20px !important; }
-  .kayla-credentials { font-size:0.72rem; left:0; right:0; bottom:0; padding:14px 18px; border-radius:0; }
-  .kayla-inner { gap:32px; }
+
+  /* Compact horizontal therapist card on mobile */
+  .kayla-photo {
+    display:flex; flex-direction:row; align-items:stretch;
+    background:var(--dark); border-radius:4px; overflow:hidden;
+  }
+  .kayla-photo img {
+    width:110px; height:auto; flex-shrink:0;
+    object-fit:cover; object-position:center 18%;
+    border-radius:0;
+  }
+  .kayla-credentials {
+    position:static; background:transparent; border-radius:0;
+    padding:18px 16px; flex:1; display:flex;
+    flex-direction:column; justify-content:center; font-size:0.78rem;
+  }
 
   .process-section { padding:70px 20px; }
   .process-steps { grid-template-columns:repeat(2,1fr); }
