@@ -476,7 +476,7 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
 
-  .hero { padding:0 20px 110px; min-height:100svh; }
+  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.5) 40%, rgba(44,36,22,0.88) 100%), url('../images/hero.jpg') center/cover no-repeat; }
   .hero-inner { grid-template-columns:1fr; gap:28px; }
   .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
   .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
