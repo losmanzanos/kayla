@@ -228,7 +228,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 /* ── INSTAGRAM / COMMUNITY ── */
 .instagram-section { padding:100px 60px; background:var(--blush); }
 .instagram-inner { max-width:1200px; margin:0 auto; }
-.ig-community { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.ig-community { display:grid; grid-template-columns:1fr 380px; gap:80px; align-items:center; }
 .ig-stats { display:flex; gap:40px; margin:32px 0 36px; }
 .ig-stat { text-align:center; }
 .ig-stat-num { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--burnt); line-height:1; }
