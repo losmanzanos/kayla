@@ -538,7 +538,10 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .ig-stat-num { font-size:2rem; }
   .ig-topic { padding:18px 14px; }
   .ig-topic h4 { font-size:0.92rem; }
-  .section-title { margin-bottom:18px; }
+  .section-title { margin-bottom:18px; font-size:1.65rem; }
+  .section-title br { display:none; }
+  .story-section .section-title,
+  .niche-section .section-title { font-size:1.75rem; }
   .modality-item { padding:22px 0; }
   .faq-question { font-size:1.05rem; padding:18px 0; }
   .strip { line-height:1.75; }
