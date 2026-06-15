@@ -119,6 +119,7 @@ document.querySelectorAll('.faq-question').forEach(function(q){
   // Find the Services link — match either /services/ or /kayla/services/
   var svcLink = null;
   menu.querySelectorAll('a').forEach(function(a){
+    if(a.closest('.mobile-subnav')) return; // skip links inside the subnav itself
     var h = a.getAttribute('href') || '';
     if(h === '/services/' || h.indexOf('/services/') > -1 || h === '/kayla/services/') svcLink = a;
   });
