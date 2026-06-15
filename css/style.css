@@ -409,7 +409,7 @@ footer p { font-size:0.84rem; line-height:1.75; }
     background:var(--dark); border-radius:4px; overflow:hidden;
   }
   .kayla-photo img {
-    width:200px; height:auto; flex-shrink:0;
+    width:260px; height:auto; flex-shrink:0;
     object-fit:cover; object-position:center 18%; border-radius:0;
   }
   .kayla-credentials {
