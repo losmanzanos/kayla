@@ -86,6 +86,86 @@ document.querySelectorAll('.faq-question').forEach(function(q){
   });
 })();
 
+/* ── Desktop dropdown (click to toggle, caret rotates) ── */
+(function(){
+  var dropdowns = document.querySelectorAll('.nav-has-dropdown');
+  dropdowns.forEach(function(li){
+    var link = li.querySelector(':scope > a');
+    if(!link) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var wasOpen = li.classList.contains('open');
+      dropdowns.forEach(function(d){ d.classList.remove('open'); });
+      if(!wasOpen) li.classList.add('open');
+    });
+  });
+  // Close when clicking outside
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-has-dropdown')){
+      dropdowns.forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  // Close on Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') dropdowns.forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+
+/* ── Mobile services accordion ── */
+(function(){
+  if(!menu) return;
+  var subnav = menu.querySelector('.mobile-subnav');
+  if(!subnav) return;
+  // Find the Services link — match either /services/ or /kayla/services/
+  var svcLink = null;
+  menu.querySelectorAll('a').forEach(function(a){
+    var h = a.getAttribute('href') || '';
+    if(h === '/services/' || h.indexOf('/services/') > -1 || h === '/kayla/services/') svcLink = a;
+  });
+  if(!svcLink) return;
+
+  // Wrap Services link in a flex row with a caret button
+  var row = document.createElement('div');
+  row.className = 'mobile-svc-row';
+  svcLink.parentNode.insertBefore(row, svcLink);
+  row.appendChild(svcLink);
+
+  var caret = document.createElement('button');
+  caret.className = 'mobile-svc-caret';
+  caret.setAttribute('aria-label', 'Toggle services submenu');
+  caret.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  row.appendChild(caret);
+
+  // Prevent Services link from closing the menu; instead toggle subnav
+  svcLink.removeEventListener('click', closeMenu);
+  // Re-add the listener list from querySelectorAll won't let us remove by reference,
+  // so we capture clicks on the link with a capturing interceptor
+  svcLink.addEventListener('click', function(e){
+    if(!subnav.classList.contains('open')){
+      e.preventDefault();
+      e.stopPropagation();
+      subnav.classList.add('open');
+      caret.classList.add('open');
+    } else {
+      closeMenu();
+    }
+  }, true);
+
+  caret.addEventListener('click', function(e){
+    e.stopPropagation();
+    subnav.classList.toggle('open');
+    caret.classList.toggle('open');
+  });
+
+  // Close subnav when any subnav link is clicked (closeMenu handles the rest)
+  subnav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      subnav.classList.remove('open');
+      caret.classList.remove('open');
+    });
+  });
+})();
+
 })();
 
 // GitHub Pages preview: rewrite root-relative links when served from /kayla/
