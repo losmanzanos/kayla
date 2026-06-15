@@ -249,17 +249,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
   display:block; transition:transform 0.45s ease;
 }
 .ig-grid:hover .ig-post img { transform:scale(1.02); }
-.ig-post-cap {
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(44,36,22,0.88) 0%, rgba(44,36,22,0.1) 55%, transparent 100%);
-  display:flex; align-items:flex-end; padding:14px 12px;
-  opacity:0; transition:opacity 0.3s ease;
-}
-.ig-post:hover .ig-post-cap { opacity:1; }
-.ig-post-cap p {
-  color:white; font-family:'Jost',sans-serif; font-size:0.72rem;
-  line-height:1.4; font-weight:400;
-}
+.ig-post-cap { display:none; }
 
 /* ── HOME CONTACT FORM WRAP ── */
 .home-form-wrap { background:white; border-radius:12px; padding:40px; box-shadow:0 4px 28px rgba(44,36,22,0.07); }
@@ -419,7 +409,7 @@ footer p { font-size:0.84rem; line-height:1.75; }
     background:var(--dark); border-radius:4px; overflow:hidden;
   }
   .kayla-photo img {
-    width:140px; height:auto; flex-shrink:0;
+    width:200px; height:auto; flex-shrink:0;
     object-fit:cover; object-position:center 18%; border-radius:0;
   }
   .kayla-credentials {
@@ -532,7 +522,6 @@ footer p { font-size:0.84rem; line-height:1.75; }
   .instagram-section { padding:70px 20px; }
   .ig-community { grid-template-columns:1fr; gap:32px; }
   .ig-grid { gap:4px; max-width:100%; }
-  .ig-post-cap { opacity:1; }
   .ig-stats { gap:24px; }
 
   .fees-section { padding:4px; }
