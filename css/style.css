@@ -55,6 +55,39 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .nav-cta { background:var(--burnt)!important; color:white!important; padding:10px 22px; border-radius:2px; }
 .nav-cta:hover { background:var(--olive)!important; color:white!important; }
 
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown { position:relative; }
+.nav-has-dropdown > a::after {
+  content:''; display:inline-block; width:5px; height:5px; margin-left:5px;
+  border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-2px); vertical-align:middle;
+}
+.nav-dropdown {
+  display:none; position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%);
+  background:rgba(250,246,241,0.98); backdrop-filter:blur(12px);
+  border:1px solid rgba(124,106,10,0.12); border-radius:2px;
+  padding:6px 0; min-width:180px; list-style:none;
+  box-shadow:0 8px 28px rgba(44,36,22,0.1);
+}
+.nav-dropdown::before {
+  content:''; position:absolute; top:-5px; left:50%; transform:translateX(-50%);
+  width:10px; height:10px; background:rgba(250,246,241,0.98);
+  border-left:1px solid rgba(124,106,10,0.12); border-top:1px solid rgba(124,106,10,0.12);
+  transform:translateX(-50%) rotate(45deg);
+}
+.nav-has-dropdown:hover .nav-dropdown { display:block; }
+.nav-dropdown li a {
+  display:block; padding:10px 22px; white-space:nowrap;
+  font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--mid); transition:color 0.2s, background 0.2s;
+}
+.nav-dropdown li a:hover { color:var(--burnt); background:rgba(124,106,10,0.05); }
+.nav-dropdown li a::after { display:none; }
+
+/* ── MOBILE SUBNAV ── */
+.mobile-subnav { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:-10px; }
+.mobile-subnav a { font-size:1.1rem !important; color:var(--mid) !important; letter-spacing:0.05em; }
+
 /* hamburger */
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
 .hamburger span { display:block; width:24px; height:1.5px; background:var(--dark); transition:all 0.3s; }
