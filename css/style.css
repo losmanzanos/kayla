@@ -65,6 +65,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .mobile-menu {
   display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:190;
   background:var(--cream); flex-direction:column; align-items:center; justify-content:center; gap:32px;
+  padding-top:68px; padding-bottom:20px; overflow-y:auto;
 }
 .mobile-menu.open { display:flex; }
 .mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--dark); text-decoration:none; letter-spacing:0.04em; }
@@ -591,6 +592,7 @@ footer p { font-size:0.84rem; line-height:1.75; }
   letter-spacing:0.18em; text-transform:uppercase; color:var(--mid);
 }
 .mobile-menu a.active { color:var(--burnt); }
+.mobile-menu a.m-cta, .mobile-menu a.m-cta.active { color:white; }
 
 /* ══════════════════════════════
    CREDENTIALS GRID (about page)
