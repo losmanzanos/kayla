@@ -189,6 +189,8 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .modality-num { font-family:'Cormorant Garamond',serif; font-size:0.78rem; color:var(--burnt); letter-spacing:0.1em; margin-bottom:5px; }
 .modality-item h4 { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:500; color:var(--dark); margin-bottom:7px; }
 .modality-item p { font-size:0.87rem; line-height:1.75; color:var(--mid); }
+.learn-more { display:inline-block; margin-top:10px; font-size:0.82rem; font-weight:500; letter-spacing:0.04em; color:var(--burnt); text-decoration:none; border-bottom:1px solid transparent; transition:border-color 0.2s, color 0.2s; }
+.learn-more:hover { color:var(--olive); border-bottom-color:var(--olive); }
 
 /* ── MEET KAYLA ── */
 .kayla-section { padding:100px 60px; background:var(--sage); }
