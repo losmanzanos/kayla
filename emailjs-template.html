@@ -1,0 +1,93 @@
+<!--
+  Mariposa Mental Wellness — EmailJS notification template
+  ========================================================
+  HOW TO USE:
+    1. EmailJS dashboard → Email Templates → Create New Template.
+    2. Switch the content editor to "Code" / HTML mode and paste EVERYTHING below.
+    3. Set the template "Subject" to:   New consultation request from {{first_name}} {{last_name}}
+    4. Set "To Email" to Kayla's inbox, and "Reply To" to:  {{email}}
+       (so Kayla can reply straight to the client).
+    5. Save, copy the Template ID into js/form.js.
+  Email clients ignore <style> in many cases, so all styling is inline + table-based.
+  Web fonts (Cormorant/Jost) don't render in email, so we fall back to Georgia/Arial.
+-->
+<div style="margin:0;padding:0;background:#FAF6F1;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF6F1;padding:32px 12px;font-family:Arial,Helvetica,sans-serif;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:6px;overflow:hidden;box-shadow:0 2px 14px rgba(44,36,22,0.08);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background:#263A22;padding:34px 40px 30px;text-align:center;">
+              <div style="font-size:26px;line-height:1;">🦋</div>
+              <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:1px;color:#FFDAC6;margin-top:10px;">Mariposa Mental Wellness</div>
+              <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#BABD8D;margin-top:8px;">New Consultation Request</div>
+            </td>
+          </tr>
+
+          <!-- Intro -->
+          <tr>
+            <td style="padding:34px 40px 8px;">
+              <p style="margin:0 0 6px;font-family:Georgia,serif;font-size:20px;color:#2C2416;">A new inquiry just came in</p>
+              <p style="margin:0;font-size:14px;line-height:1.6;color:#6B5E45;">Someone reached out through the Mariposa website. Their details are below &mdash; you can reply directly to this email to reach them.</p>
+            </td>
+          </tr>
+
+          <!-- Details -->
+          <tr>
+            <td style="padding:22px 40px 6px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #EDE5DA;">
+                <tr>
+                  <td style="padding:16px 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;width:150px;vertical-align:top;">Name</td>
+                  <td style="padding:16px 0 6px;font-size:15px;color:#2C2416;">{{first_name}} {{last_name}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;vertical-align:top;border-top:1px solid #F3EDE4;">Email</td>
+                  <td style="padding:10px 0;font-size:15px;border-top:1px solid #F3EDE4;"><a href="mailto:{{email}}" style="color:#EB6424;text-decoration:none;">{{email}}</a></td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;vertical-align:top;border-top:1px solid #F3EDE4;">Phone</td>
+                  <td style="padding:10px 0;font-size:15px;color:#2C2416;border-top:1px solid #F3EDE4;">{{phone}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;vertical-align:top;border-top:1px solid #F3EDE4;">Focus Area</td>
+                  <td style="padding:10px 0;font-size:15px;color:#2C2416;border-top:1px solid #F3EDE4;">{{service}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;vertical-align:top;border-top:1px solid #F3EDE4;">Session Type</td>
+                  <td style="padding:10px 0;font-size:15px;color:#2C2416;border-top:1px solid #F3EDE4;">{{session_type}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Message -->
+          <tr>
+            <td style="padding:14px 40px 30px;">
+              <div style="background:#FAF6F1;border-left:3px solid #FFDAC6;border-radius:2px;padding:20px 22px;">
+                <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7C6A0A;margin-bottom:10px;">Their Message</div>
+                <div style="font-size:15px;line-height:1.7;color:#2C2416;white-space:pre-wrap;">{{message}}</div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="padding:0 40px 36px;">
+              <a href="mailto:{{email}}" style="display:inline-block;background:#EB6424;color:#ffffff;text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border-radius:2px;">Reply to {{first_name}} &rarr;</a>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#FAF6F1;border-top:1px solid #EDE5DA;padding:22px 40px;text-align:center;">
+              <p style="margin:0;font-size:12px;line-height:1.6;color:#9A8E78;">Sent automatically from the Mariposa Mental Wellness contact form.<br>Kayla Martinez, MS, LPC &middot; Mesa, AZ</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

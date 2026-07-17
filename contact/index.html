@@ -40,6 +40,7 @@
       </ul>
     </li>
     <li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a href="/faq/">FAQ</a></li>
     <li><a href="/contact/" class="nav-cta">Book Now</a></li>
   </ul>
@@ -61,6 +62,7 @@
     <a href="/emdr-therapy-mesa-az/">EMDR Therapy</a>
   </div>
   <a href="/therapy-for-mothers-mesa-az/">For Mothers</a>
+  <a href="/blog/">Blog</a>
   <a href="/faq/">FAQ</a>
   <a href="/contact/" class="m-cta active">Book a Consultation</a>
 </div>
@@ -82,20 +84,19 @@
       <div class="contact-form-wrap">
         <p class="eyebrow">Get in Touch</p>
         <h2 class="section-title" style="margin-bottom:12px;">Ready when <em>you are</em></h2>
-        <p class="body-text" style="margin-bottom:32px;">Fill out the form below and Kayla will respond within one business day. Not ready to fill out a form? You can also call or text <a href="tel:4806050846" style="color:var(--olive);font-weight:600;">(480) 605-0846</a>.</p>
+        <p class="body-text" style="margin-bottom:32px;">Fill out the form below and Kayla will respond within one business day. Not ready to fill out a form? You can also call or text <a href="tel:+14806050846" style="color:var(--olive);font-weight:600;">(480) 605-0846</a>.</p>
 
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hidden" style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+        <form class="contact-form" id="contact-form" novalidate>
+          <p class="hidden" style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
           <div class="form-row">
             <div class="form-group">
               <label for="first-name">First Name <span class="req">*</span></label>
-              <input type="text" id="first-name" name="first-name" required placeholder="Your first name">
+              <input type="text" id="first-name" name="first_name" required placeholder="Your first name">
             </div>
             <div class="form-group">
               <label for="last-name">Last Name <span class="req">*</span></label>
-              <input type="text" id="last-name" name="last-name" required placeholder="Your last name">
+              <input type="text" id="last-name" name="last_name" required placeholder="Your last name">
             </div>
           </div>
 
@@ -127,7 +128,7 @@
 
           <div class="form-group">
             <label for="session-type">Session preference</label>
-            <select id="session-type" name="session-type">
+            <select id="session-type" name="session_type">
               <option value="" disabled selected>In-person, virtual, or no preference?</option>
               <option value="in-person">In-person (Mesa, AZ)</option>
               <option value="virtual">Virtual / Telehealth (anywhere in AZ)</option>
@@ -147,8 +148,9 @@
             </label>
           </div>
 
-          <button type="submit" class="btn-primary btn-full">Send My Message &rarr;</button>
+          <button type="submit" class="btn-primary btn-full" id="contact-submit">Send My Message &rarr;</button>
           <p class="form-note">Kayla responds within 1 business day. All information is kept strictly confidential.</p>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
 
@@ -161,7 +163,7 @@
           </div>
           <div>
             <strong>Call or Text</strong>
-            <a href="tel:4806050846">(480) 605-0846</a>
+            <a href="tel:+14806050846">(480) 605-0846</a>
             <span class="ci-note">Weekdays 9am&ndash;6pm MST</span>
           </div>
         </div>
@@ -247,5 +249,7 @@
   <div class="footer-bottom"><span>&copy; 2026 Mariposa Mental Wellness &middot; Kayla Martinez, MS, LPC</span><span>For emergencies call <a href="tel:988">988</a> or 911.</span></div>
 </footer>
 <script src="../js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="../js/form.js"></script>
 </body>
 </html>

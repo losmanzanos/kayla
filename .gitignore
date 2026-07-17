@@ -1,3 +1,10 @@
 fbc-update/
 goldenhour-*
 fbc-update
+
+# Node / TinaCMS
+node_modules/
+tina/__generated__/
+admin/
+.env
+.DS_Store
