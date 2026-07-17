@@ -4,7 +4,7 @@ date: 2026-07-14T09:00:00.000Z
 published: true
 author: Kayla Martinez, MS, LPC
 excerpt: "If you were the responsible one, the helper, the child who kept everyone steady — that role didn't disappear when you grew up. Here's how oldest daughter syndrome shows up, and how therapy helps you set it down."
-image: /images/journal.jpg
+image: /images/hero-journal.jpg
 tags:
   - Motherhood & Burnout
   - Anxiety & Perfectionism

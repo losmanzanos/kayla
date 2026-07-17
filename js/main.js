@@ -1,21 +1,6 @@
 /* Mariposa Mental Wellness — Main JS */
 (function(){'use strict';
 
-/* ── iOS Safari hero height fix ── */
-(function(){
-  function isM(){ return window.innerWidth<=768; }
-  function lockH(){
-    if(isM()){
-      document.documentElement.style.setProperty('--hero-h', window.innerHeight+'px');
-    } else {
-      document.documentElement.style.removeProperty('--hero-h');
-    }
-  }
-  lockH();
-  window.addEventListener('orientationchange', function(){ setTimeout(lockH,300); });
-  window.addEventListener('resize', function(){ if(!isM()) lockH(); });
-})();
-
 /* ── Nav scroll behavior ── */
 var hdr = document.querySelector('nav');
 function updateNav(){
@@ -67,8 +52,15 @@ document.querySelectorAll('.faq-question').forEach(function(q){
   q.addEventListener('click', function(){
     var item = q.parentElement;
     var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
-    if(!wasOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+      var b = i.querySelector('.faq-question');
+      if(b) b.setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){
+      item.classList.add('open');
+      q.setAttribute('aria-expanded','true');
+    }
   });
 });
 

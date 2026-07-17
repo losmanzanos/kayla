@@ -132,7 +132,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
 {
   const r = "../";
   const cards = posts.map((p) => {
-    const img = abs(r, p.data.image || "/images/journal.jpg");
+    const img = abs(r, p.data.image || "/images/hero-blog.jpg");
     return `<a class="blog-card" href="/blog/${p.slug}/">
       <div class="blog-card-img"><img src="${img}" alt="${esc(p.data.title)}" loading="lazy"></div>
       <div class="blog-card-body">
@@ -174,7 +174,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
     title: "Blog | Mariposa Mental Wellness — Therapy Notes, Mesa AZ",
     desc: "Honest, practical writing from Kayla Martinez, MS, LPC on trauma, anxiety, perfectionism, IFS, and motherhood — from her Mesa, AZ therapy practice.",
     canonical: `${SITE}/blog/`,
-    image: `${SITE}/images/journal.jpg`, jsonld,
+    image: `${SITE}/images/hero-blog.jpg`, jsonld,
   }) + body + tail(r);
   fs.writeFileSync(path.join(BLOG_DIR, "index.html"), page);
 }
@@ -184,14 +184,14 @@ for (const p of posts) {
   const r = "../../";
   const dir = path.join(BLOG_DIR, p.slug);
   fs.mkdirSync(dir, { recursive: true });
-  const img = abs(r, p.data.image || "/images/journal.jpg");
+  const img = abs(r, p.data.image || "/images/hero-blog.jpg");
   const canonical = `${SITE}/blog/${p.slug}/`;
 
   const jsonld = {
     "@context": "https://schema.org", "@type": "BlogPosting",
     headline: p.data.title,
     description: p.data.excerpt || "",
-    image: `${SITE}${(p.data.image || "/images/journal.jpg").replace(/^(?!\/)/, "/")}`,
+    image: `${SITE}${(p.data.image || "/images/hero-blog.jpg").replace(/^(?!\/)/, "/")}`,
     datePublished: new Date(p.data.date).toISOString(),
     author: { "@type": "Person", name: p.data.author || "Kayla Martinez" },
     publisher: { "@type": "Organization", name: "Mariposa Mental Wellness" },
@@ -222,7 +222,7 @@ for (const p of posts) {
   const page = head(r, {
     title: `${p.data.title} | Mariposa Mental Wellness`,
     desc: p.data.excerpt || p.data.title,
-    canonical, image: `${SITE}${(p.data.image || "/images/journal.jpg")}`, jsonld,
+    canonical, image: `${SITE}${(p.data.image || "/images/hero-blog.jpg")}`, jsonld,
   }) + body + tail(r);
   fs.writeFileSync(path.join(dir, "index.html"), page);
 }
