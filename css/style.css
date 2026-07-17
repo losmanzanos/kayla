@@ -136,8 +136,8 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 55%, rgba(38,29,17,0.3) 100%), url('../images/hero-path.jpg'); background-position:center 60%; }
 .page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.8) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-journal.jpg'); background-position:center 55%; }
 .page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-leaves.jpg'); background-position:center 50%; }
-.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.28) 100%), url('../images/hero-contact.jpg'); background-position:center 55%; }
-.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.26) 100%), url('../images/hero-faq.jpg'); background-position:center 62%; }
+.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.28) 100%), url('../images/hero-contact.jpg'); background-position:center 60%; }
+.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.7) 0%, rgba(38,29,17,0.4) 52%, rgba(38,29,17,0.24) 100%), url('../images/hero-faq.jpg'); background-position:center 45%; }
 .page-hero-inner { max-width:1200px; width:100%; }
 .breadcrumb { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:16px; }
 .breadcrumb a { color:rgba(255,255,255,0.65); transition:color 0.2s; }
