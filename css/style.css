@@ -131,8 +131,8 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 }
 /* Distinct, theme-matched imagery per page */
 .page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.26) 100%), url('../images/hero-butterfly.jpg'); background-position:center 58%; }
-.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.68) 0%, rgba(38,29,17,0.4) 50%, rgba(38,29,17,0.24) 100%), url('../images/hero-room.jpg'); background-position:center 52%; }
-.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-mother.jpg'); background-position:center 42%; }
+.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.68) 0%, rgba(38,29,17,0.4) 50%, rgba(38,29,17,0.24) 100%), url('../images/hero-room.jpg?v=2'); background-position:center 52%; }
+.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-mother.jpg?v=2'); background-position:center 42%; }
 .page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 55%, rgba(38,29,17,0.3) 100%), url('../images/hero-path.jpg'); background-position:center 60%; }
 .page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.8) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-journal.jpg'); background-position:center 55%; }
 .page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-leaves.jpg'); background-position:center 50%; }
