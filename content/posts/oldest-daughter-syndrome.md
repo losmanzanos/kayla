@@ -46,7 +46,7 @@ Change here is quiet, not dramatic. Clients often notice things like:
 
 If you read this and felt a lump in your throat, I want you to know: the exhaustion you're carrying makes sense, and you don't have to navigate it alone. You were never meant to be everyone's steady ground at the cost of your own.
 
-This is exactly the work I love doing — helping women (and especially the ones who've been strong for far too long) reconnect with their own wisdom and resilience. If you'd like to explore it together, I offer [therapy for mothers and caretakers in Mesa, AZ and virtually across Arizona](/therapy-for-mothers-mesa-az/).
+This is exactly the work I love doing — helping people (and especially the ones who've been strong for far too long) reconnect with their own wisdom and resilience. If you'd like to explore it together, I offer [therapy for mothers and caretakers in Mesa, AZ and virtually across Arizona](/therapy-for-mothers-mesa-az/).
 
 When you're ready, [reach out for a free 15-minute consultation](/contact/). No pressure — just a conversation.
 

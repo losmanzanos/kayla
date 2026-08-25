@@ -62,7 +62,7 @@ const footer = () => `<footer>
   <div class="footer-inner">
     <div>
       <div class="footer-logo">${BUTTERFLY}Mariposa Mental Wellness</div>
-      <p>Trauma-informed therapy for women navigating anxiety, PTSD, perfectionism, and the quiet work of becoming themselves again.</p>
+      <p>Trauma-informed therapy for adults navigating anxiety, PTSD, perfectionism, and the quiet work of becoming themselves again.</p>
       <p style="margin-top:14px;">Kayla Martinez, MS, LPC &middot; LPC-24196<br>Licensed in Arizona</p>
       <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" target="_blank" rel="noopener" style="color:var(--amber);">@mariposamentalwellness</a></p>
     </div>
