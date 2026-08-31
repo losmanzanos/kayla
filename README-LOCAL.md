@@ -56,3 +56,24 @@ npm run blog           # rebuilds /blog/index.html and each /blog/<slug>/
 
 - Framework preset: **None** · Build command: `npm run build` · Output dir: `.`
 - (Or, since the blog is pre-built, you can deploy with no build step at all.)
+
+---
+
+## Kayla's self-editing (TinaCMS)
+
+Two things are editable in the Tina admin (`npm run tina` → http://localhost:3000/admin, or via Tina Cloud once live):
+
+1. **Blog Posts** — write/edit posts (markdown, no code). Regenerate with `npm run blog`.
+2. **Site Info** — phone, contact email, street address, city/state/zip, Instagram handle
+   (stored in `content/settings/site.json`). Regenerate with `npm run siteinfo`.
+
+`npm run build` runs everything (`tinacms build` → `blog` → `siteinfo`) in order.
+`scripts/build-site.mjs` injects Site Info into every page's visible text, `tel:`/`mailto:`
+links, JSON-LD structured data, and Google Maps links. It records the last-applied values in
+`scripts/applied-nap.json` so edits are repeatable.
+
+**On Cloudflare Pages, set the build command to `npm run build`** — then when Kayla saves an edit
+in Tina (which commits to the repo), Cloudflare rebuilds and the change goes live automatically.
+
+> Auth note: Tina login is handled by Tina Cloud (app.tina.io) — email/GitHub based. Passwords are
+> set in that account, never stored in the site's code.

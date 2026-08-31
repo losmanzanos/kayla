@@ -58,6 +58,24 @@ export default defineConfig({
           { type: "rich-text", name: "body", label: "Body", isBody: true },
         ],
       },
+      {
+        name: "settings",
+        label: "Site Info",
+        path: "content/settings",
+        format: "json",
+        // A single, always-present record — no creating or deleting extra ones.
+        ui: { global: true, allowedActions: { create: false, delete: false } },
+        match: { include: "site" },
+        fields: [
+          { type: "string", name: "phone", label: "Phone number", description: "As shown on the site, e.g. (480) 555-1234." },
+          { type: "string", name: "email", label: "Contact email", description: "Where the contact form and 'Email' link point." },
+          { type: "string", name: "streetAddress", label: "Street address", description: "e.g. 123 W Main St, Suite 200. Leave your current one until the Mariposa office is set." },
+          { type: "string", name: "city", label: "City" },
+          { type: "string", name: "state", label: "State", description: "Two-letter, e.g. AZ." },
+          { type: "string", name: "zip", label: "ZIP code" },
+          { type: "string", name: "instagram", label: "Instagram handle", description: "Without the @." },
+        ],
+      },
     ],
   },
 });
