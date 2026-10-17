@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * serve.mjs — tiny zero-dependency static server for local preview.
+ * serve.mjs: tiny zero-dependency static server for local preview.
  * Serves the repo root with "pretty URL" support (/about/ → /about/index.html),
  * mirroring how Cloudflare Pages serves the site. Run: `npm run serve`.
  */

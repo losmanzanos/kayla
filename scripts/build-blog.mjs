@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * build-blog.mjs — renders /content/posts/*.md into static HTML under /blog/.
- * Zero framework: the output is plain HTML that any static host (Cloudflare
- * Pages, GitHub Pages) serves directly. Run: `npm run blog`.
+ * build-blog.mjs: renders /content/posts/*.md into static HTML under /blog/.
+ * Renders posts to plain static HTML that any static host (Cloudflare
+ * Pages, GitHub Pages) can serve directly. Run: `npm run blog`.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -62,12 +62,12 @@ const footer = () => `<footer>
   <div class="footer-inner">
     <div>
       <div class="footer-logo">${BUTTERFLY}Mariposa Mental Wellness</div>
-      <p>Trauma-informed therapy for adults navigating anxiety, PTSD, perfectionism, and the quiet work of becoming themselves again.</p>
+      <p>Trauma-informed therapy for adults working through anxiety, PTSD, and perfectionism in Mesa, AZ.</p>
       <p style="margin-top:14px;">Kayla Martinez, MS, LPC &middot; LPC-24196<br>Licensed in Arizona</p>
       <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" target="_blank" rel="noopener" style="color:var(--amber);">@mariposamentalwellness</a></p>
     </div>
     <div class="footer-col"><h5>Navigate</h5><ul><li><a href="/">Home</a></li><li><a href="/about/">About Kayla</a></li><li><a href="/services/">Services</a></li><li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+14806050846">(480) 605-0846</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">1845 S Dobson Rd, Ste 101</a></li><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">Mesa, AZ 85202</a></li><li><a href="/contact/">Virtual &mdash; All of AZ</a></li></ul></div>
+    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+14806050846">(480) 605-0846</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">1845 S Dobson Rd, Ste 101</a></li><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">Mesa, AZ 85202</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Mariposa Mental Wellness &middot; Kayla Martinez, MS, LPC</span><span>For emergencies call <a href="tel:988">988</a> or 911.</span></div>
 </footer>`;
@@ -156,7 +156,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a><span>/</span>Blog</div>
     <h1 class="reveal">Notes on <em>Healing</em></h1>
-    <p class="reveal">Honest writing on anxiety, trauma, IFS, perfectionism, and the messy middle of becoming yourself.</p>
+    <p class="reveal">Honest, practical writing on anxiety, trauma, IFS, perfectionism, and motherhood.</p>
   </div>
 </section>
 <section style="background:var(--cream);">
@@ -166,13 +166,13 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
 </section>
 <div class="cta-band">
   <h2>Prefer to talk it through <em>in person?</em></h2>
-  <p>A free 15-minute consultation is the first step. No pressure &mdash; just a conversation.</p>
+  <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
   <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a></div>
 </div>`;
 
   const page = head(r, {
-    title: "Blog | Mariposa Mental Wellness — Therapy Notes, Mesa AZ",
-    desc: "Honest, practical writing from Kayla Martinez, MS, LPC on trauma, anxiety, perfectionism, IFS, and motherhood — from her Mesa, AZ therapy practice.",
+    title: "Blog | Mariposa Mental Wellness, Therapy Notes, Mesa AZ",
+    desc: "Honest, practical writing from Kayla Martinez, MS, LPC on trauma, anxiety, perfectionism, IFS, and motherhood from her Mesa, AZ therapy practice.",
     canonical: `${SITE}/blog/`,
     image: `${SITE}/images/hero-blog.jpg`, jsonld,
   }) + body + tail(r);
@@ -215,7 +215,7 @@ for (const p of posts) {
 </section>
 <div class="cta-band">
   <h2>Ready to take <em>the first step?</em></h2>
-  <p>A free 15-minute consultation is the first step. No pressure &mdash; just a conversation.</p>
+  <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
   <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a><a href="/services/" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;">Explore Services</a></div>
 </div>`;
 
@@ -227,5 +227,5 @@ for (const p of posts) {
   fs.writeFileSync(path.join(dir, "index.html"), page);
 }
 
-console.log(`✓ Blog built: ${posts.length} post(s) → /blog/`);
+console.log(`Blog built: ${posts.length} post(s) → /blog/`);
 posts.forEach((p) => console.log(`   • /blog/${p.slug}/`));

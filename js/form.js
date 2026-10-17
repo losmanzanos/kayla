@@ -1,4 +1,4 @@
-/* Mariposa Mental Wellness — Contact form handler (EmailJS)
+/* Mariposa Mental Wellness, contact form handler (EmailJS)
    ------------------------------------------------------------------
    SETUP (one-time, in the EmailJS dashboard at https://dashboard.emailjs.com):
      1. Create an Email Service (e.g. connect Kayla's inbox) → copy its SERVICE ID.
@@ -44,12 +44,12 @@
 
     // Honeypot: if filled, silently pretend success (it's a bot).
     var honey = form.querySelector('[name="bot-field"]');
-    if (honey && honey.value) { setStatus('success', "Thank you — your message is on its way."); form.reset(); return; }
+    if (honey && honey.value) { setStatus('success', "Thank you, your message is on its way."); form.reset(); return; }
 
     // Native validation
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
-    // Not configured yet — guard so nothing breaks in preview.
+    // Not configured yet, so guard here so nothing breaks in preview.
     if (EMAILJS_CONFIG.serviceId.indexOf('YOUR_') === 0) {
       setStatus('error', "The contact form isn't connected to EmailJS yet. Add your EmailJS keys in <code>js/form.js</code> to go live. (Everything else works.)");
       return;
@@ -66,11 +66,11 @@
     window.emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form)
       .then(function () {
         form.reset();
-        setStatus('success', "Thank you for reaching out. Your message has been sent &mdash; Kayla will get back to you within one business day. 🦋");
+        setStatus('success', "Thank you for reaching out. Your message has been sent, and Kayla will get back to you within one business day.");
       })
       .catch(function (err) {
         console.error('EmailJS error:', err);
-        setStatus('error', "Sorry &mdash; that didn't send. Please try again, or call/text (480) 605-0846.");
+        setStatus('error', "Sorry, that didn't send. Please try again, or call/text (480) 605-0846.");
       })
       .finally(function () {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }

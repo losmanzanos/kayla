@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * build-site.mjs — injects editable "Site Info" (content/settings/site.json)
+ * build-site.mjs: injects editable "Site Info" (content/settings/site.json)
  * into every built HTML page: visible NAP text, tel:/mailto: links, JSON-LD,
  * and Google Maps links. Repeatable: it records the last-applied display
  * values in scripts/applied-nap.json so it can find and update them next run.
@@ -79,6 +79,6 @@ fs.writeFileSync(appliedPath, JSON.stringify({
   cityzipDisplay: cityStateZip,
 }, null, 2) + "\n");
 
-console.log(`✓ Site info injected into ${changed} page(s).`);
+console.log(`Site info injected into ${changed} page(s).`);
 console.log(`   phone ${settings.phone} · ${phoneTel} | email ${settings.email}`);
 console.log(`   ${settings.streetAddress}, ${cityStateZip}`);

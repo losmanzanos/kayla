@@ -1,4 +1,4 @@
-/* Mariposa Mental Wellness — Main JS */
+/* Mariposa Mental Wellness, main JS */
 (function(){'use strict';
 
 /* ── Nav scroll behavior ── */
@@ -108,7 +108,7 @@ document.querySelectorAll('.faq-question').forEach(function(q){
   if(!menu) return;
   var subnav = menu.querySelector('.mobile-subnav');
   if(!subnav) return;
-  // Find the Services link — match either /services/ or /kayla/services/
+  // Find the Services link, matching either /services/ or /kayla/services/
   var svcLink = null;
   menu.querySelectorAll('a').forEach(function(a){
     if(a.closest('.mobile-subnav')) return; // skip links inside the subnav itself
