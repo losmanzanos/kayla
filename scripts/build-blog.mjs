@@ -66,7 +66,7 @@ const footer = () => `<footer>
       <p style="margin-top:14px;">Kayla Martinez, MS, LPC &middot; LPC-24196<br>Licensed in Arizona</p>
       <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" target="_blank" rel="noopener" style="color:var(--amber);">@mariposamentalwellness</a></p>
     </div>
-    <div class="footer-col"><h5>Navigate</h5><ul><li><a href="/">Home</a></li><li><a href="/about/">About Kayla</a></li><li><a href="/services/">Services</a></li><li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/about/">About Kayla</a></li><li><a href="/services/">Services</a></li><li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
     <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+14806050846">(480) 605-0846</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">1845 S Dobson Rd, Ste 101</a></li><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">Mesa, AZ 85202</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Mariposa Mental Wellness &middot; Kayla Martinez, MS, LPC</span><span>For emergencies call <a href="tel:988">988</a> or 911.</span></div>
@@ -85,11 +85,14 @@ const head = (r, { title, desc, canonical, image, jsonld }) => `<!DOCTYPE html>
 <link rel="canonical" href="${canonical}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:type" content="${jsonld && jsonld["@type"] === "BlogPosting" ? "article" : "website"}">
+<meta property="og:type" content="${[].concat(jsonld || []).some((j) => j["@type"] === "BlogPosting") ? "article" : "website"}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ""}
+<meta name="twitter:image" content="${image}">
+${[].concat(jsonld || []).map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n")}
 <link rel="stylesheet" href="${r}css/style.css">
 </head>
 <body>
@@ -104,6 +107,18 @@ ${footer()}
 </html>`;
 
 /* ---------- helpers ---------- */
+const DEFAULT_IMG = "/images/blog/journal-morning.jpg";
+function crumbs(list) {
+  return { "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: list.map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE + url })) };
+}
+function pic(src, alt, attrs = "") {
+  const local = src.replace(/^(\.\.\/)+/, "").split("?")[0];
+  const webp = local.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+  const img = `<img src="${src}" alt="${esc(alt)}" ${attrs}>`;
+  if (webp === local || !fs.existsSync(path.join(ROOT, webp))) return img;
+  return `<picture><source srcset="${src.replace(/\.(jpg|jpeg|png)(\?.*)?$/i, ".webp")}" type="image/webp">${img}</picture>`;
+}
 function esc(s = "") { return String(s).replace(/"/g, "&quot;"); }
 function fmtDate(d) {
   return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
@@ -132,12 +147,12 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
 {
   const r = "../";
   const cards = posts.map((p) => {
-    const img = abs(r, p.data.image || "/images/hero-blog.jpg");
+    const img = abs(r, p.data.image || DEFAULT_IMG);
     return `<a class="blog-card" href="/blog/${p.slug}/">
-      <div class="blog-card-img"><img src="${img}" alt="${esc(p.data.title)}" loading="lazy"></div>
+      <div class="blog-card-img">${pic(img, p.data.imageAlt || p.data.title, 'loading="lazy"')}</div>
       <div class="blog-card-body">
         <div class="post-meta">${fmtDate(p.data.date)}${p.data.tags?.length ? ` &middot; ${esc(p.data.tags[0])}` : ""}</div>
-        <h3>${esc(p.data.title)}</h3>
+        <h2>${esc(p.data.title)}</h2>
         <p>${esc(p.data.excerpt || "")}</p>
         <span class="blog-card-more">Read more &rarr;</span>
       </div>
@@ -155,8 +170,8 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   const body = `<section class="page-hero hero-blog">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a><span>/</span>Blog</div>
-    <h1 class="reveal">Notes on <em>Healing</em></h1>
-    <p class="reveal">Honest, practical writing on anxiety, trauma, IFS, perfectionism, and motherhood.</p>
+    <h1>Notes from the practice</h1>
+    <p>Plain-spoken writing on anxiety, trauma, perfectionism, parts work, and the stretch of life where you're not who you were and not yet who you're becoming.</p>
   </div>
 </section>
 <section style="background:var(--cream);">
@@ -165,7 +180,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   </div>
 </section>
 <div class="cta-band">
-  <h2>Prefer to talk it through <em>in person?</em></h2>
+  <h2>Rather talk it through?</h2>
   <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
   <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a></div>
 </div>`;
@@ -174,7 +189,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
     title: "Blog | Mariposa Mental Wellness, Therapy Notes, Mesa AZ",
     desc: "Honest, practical writing from Kayla Martinez, MS, LPC on trauma, anxiety, perfectionism, IFS, and motherhood from her Mesa, AZ therapy practice.",
     canonical: `${SITE}/blog/`,
-    image: `${SITE}/images/hero-blog.jpg`, jsonld,
+    image: `${SITE}/images/og/blog.jpg`, jsonld: [jsonld, crumbs([["Home", "/"], ["Blog", "/blog/"]])],
   }) + body + tail(r);
   fs.writeFileSync(path.join(BLOG_DIR, "index.html"), page);
 }
@@ -184,14 +199,16 @@ for (const p of posts) {
   const r = "../../";
   const dir = path.join(BLOG_DIR, p.slug);
   fs.mkdirSync(dir, { recursive: true });
-  const img = abs(r, p.data.image || "/images/hero-blog.jpg");
+  const img = abs(r, p.data.image || DEFAULT_IMG);
+  const ogLocal = `/images/og/post-${p.slug}.jpg`;
+  const ogImg = SITE + (fs.existsSync(path.join(ROOT, ogLocal)) ? ogLocal : (p.data.image || DEFAULT_IMG));
   const canonical = `${SITE}/blog/${p.slug}/`;
 
   const jsonld = {
     "@context": "https://schema.org", "@type": "BlogPosting",
     headline: p.data.title,
     description: p.data.excerpt || "",
-    image: `${SITE}${(p.data.image || "/images/hero-blog.jpg").replace(/^(?!\/)/, "/")}`,
+    image: ogImg,
     datePublished: new Date(p.data.date).toISOString(),
     author: { "@type": "Person", name: p.data.author || "Kayla Martinez" },
     publisher: { "@type": "Organization", name: "Mariposa Mental Wellness" },
@@ -201,28 +218,28 @@ for (const p of posts) {
   const body = `<section class="page-hero hero-blog">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>Article</div>
-    <h1 class="reveal">${esc(p.data.title)}</h1>
-    <p class="reveal">${fmtDate(p.data.date)} &middot; ${esc(p.data.author || "Kayla Martinez, MS, LPC")}</p>
+    <h1>${esc(p.data.title)}</h1>
+    <p>${fmtDate(p.data.date)} &middot; ${esc(p.data.author || "Kayla Martinez, MS, LPC")}</p>
   </div>
 </section>
 <section style="background:white;">
   <div class="section post-wrap">
-    <img class="post-hero-img" src="${img}" alt="${esc(p.data.title)}">
+    ${pic(img, p.data.imageAlt || p.data.title, 'class="post-hero-img"')}
     <article class="post-body">${p.html}</article>
     <div class="post-tags">${(p.data.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
-    <a href="/blog/" class="btn-outline" style="margin-top:20px;display:inline-block;">&larr; All Posts</a>
+    <p style="margin-top:28px;"><a href="/blog/" class="text-link">&larr; All posts</a></p>
   </div>
 </section>
 <div class="cta-band">
-  <h2>Ready to take <em>the first step?</em></h2>
+  <h2>When you're ready, I'm here.</h2>
   <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
-  <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a><a href="/services/" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;">Explore Services</a></div>
+  <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a><a href="/services/" class="text-link">See how I work</a></div>
 </div>`;
 
   const page = head(r, {
     title: `${p.data.title} | Mariposa Mental Wellness`,
     desc: p.data.excerpt || p.data.title,
-    canonical, image: `${SITE}${(p.data.image || "/images/hero-blog.jpg")}`, jsonld,
+    canonical, image: ogImg, jsonld: [jsonld, crumbs([["Home", "/"], ["Blog", "/blog/"], [p.data.title, `/blog/${p.slug}/`]])],
   }) + body + tail(r);
   fs.writeFileSync(path.join(dir, "index.html"), page);
 }

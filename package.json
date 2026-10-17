@@ -2,7 +2,7 @@
   "name": "mariposa-mental-wellness",
   "version": "1.0.0",
   "private": true,
-  "description": "Mariposa Mental Wellness — static site with a TinaCMS-managed blog.",
+  "description": "Mariposa Mental Wellness: static site with a TinaCMS-managed blog.",
   "type": "module",
   "scripts": {
     "blog": "node scripts/build-blog.mjs",

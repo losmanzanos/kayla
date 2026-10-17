@@ -4,7 +4,8 @@ date: 2026-07-14T09:00:00.000Z
 published: true
 author: Kayla Martinez, MS, LPC
 excerpt: "If you were the responsible one, the helper, the child who kept everyone steady, that role didn't disappear when you grew up. Here's how oldest daughter syndrome shows up, and how therapy helps you set it down."
-image: /images/hero-journal.jpg
+image: /images/p-linens.jpg
+imageAlt: "Folded linens in soft peach and sand tones stacked on a wooden crate"
 tags:
   - Motherhood & Burnout
   - Anxiety & Perfectionism
@@ -44,7 +45,7 @@ Change here is quiet, not dramatic. Clients often notice things like:
 
 ## You don't have to earn your worth
 
-If you read this and felt a lump in your throat, I want you to know: the exhaustion you're carrying makes sense, and you don't have to navigate it alone. You were never meant to be everyone's steady ground at the cost of your own.
+If you read this and felt a lump in your throat, I want you to know: the exhaustion you're carrying makes sense, and you don't have to carry it alone. You were never meant to be everyone's steady ground at the cost of your own.
 
 This is exactly the work I love doing: helping people (and especially the ones who've been strong for far too long) reconnect with their own wisdom and resilience. If you'd like to explore it together, I offer [therapy for mothers and caretakers in Mesa, AZ and virtually across Arizona](/therapy-for-mothers-mesa-az/).
 

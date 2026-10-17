@@ -53,6 +53,7 @@ export default defineConfig({
           { type: "boolean", name: "published", label: "Published", description: "Uncheck to keep as a draft (won't appear on the site).", },
           { type: "string", name: "excerpt", label: "Excerpt / Summary", ui: { component: "textarea" }, description: "1–2 sentences shown on the blog index and in search results.", },
           { type: "image", name: "image", label: "Hero Image" },
+          { type: "string", name: "imageAlt", label: "Image description", description: "One plain sentence describing the photo, for screen readers and Google. Example: Folded linens stacked on a wooden crate." },
           { type: "string", name: "tags", label: "Tags", list: true },
           { type: "string", name: "author", label: "Author" },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
@@ -63,7 +64,7 @@ export default defineConfig({
         label: "Site Info",
         path: "content/settings",
         format: "json",
-        // A single, always-present record — no creating or deleting extra ones.
+        // A single, always-present record: no creating or deleting extra ones.
         ui: { global: true, allowedActions: { create: false, delete: false } },
         match: { include: "site" },
         fields: [
