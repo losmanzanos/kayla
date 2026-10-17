@@ -19,7 +19,7 @@ const SITE = "https://mariposamentalwellness.com";
 marked.setOptions({ mangle: false, headerIds: true });
 
 /* ---------- shared chrome ---------- */
-const BUTTERFLY = `<svg width="32" height="24" viewBox="0 0 64 48" fill="none" aria-hidden="true"><path d="M32 24 C29 17 22 8 13 5 C7 3 2 6 2 12 C2 18 10 23 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 24 C25 28 15 36 13 43 C11 48 17 49 22 45 C27 41 31 33 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 24 C35 17 42 8 51 5 C57 3 62 6 62 12 C62 18 54 23 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 24 C39 28 49 36 51 43 C53 48 47 49 42 45 C37 41 33 33 32 24 Z" fill="none" stroke="#7C6A0A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="32" cy="24" rx="2" ry="10" fill="#7C6A0A"/><path d="M31 14 C29 9 25 5 22 2" stroke="#7C6A0A" stroke-width="1.6" stroke-linecap="round"/><path d="M33 14 C35 9 39 5 42 2" stroke="#7C6A0A" stroke-width="1.6" stroke-linecap="round"/><circle cx="22" cy="2" r="2" fill="#7C6A0A"/><circle cx="42" cy="2" r="2" fill="#7C6A0A"/></svg>`;
+const BUTTERFLY = `<svg width="32" height="24" viewBox="0 0 64 48" fill="#7C6A0A" aria-hidden="true"><g fill-rule="evenodd"><path d="M30.9 21.2C28.4 13.9 22.4 6.3 13.2 2.9C8.3 1.1 3.9 1.9 2.8 5.1C1.8 8.1 3.7 12.8 7.9 16.6C12.6 20.8 21 23.3 30.5 24Z M28.6 20.2C23.3 14.6 16.8 9.4 9.4 6.4C16.9 10.4 23 15.4 27.7 21.1Z M27.9 22.4C21.6 19.6 14.2 17 7.6 12.4C13.8 17.6 20.8 20.9 27.3 23.3Z"/><path d="M30.5 25.8C24.6 26 17.7 28.4 14.5 33C11.5 37.4 12.4 43.3 16.7 44.3C21.8 45.5 27.7 38.5 31.1 28.2Z M29.3 27.6C24.7 29.8 19.7 34.3 16.5 40.3C20.3 35.2 25.1 30.8 29.7 28.6Z"/><path d="M31.3 12.6C30.3 8.3 28 4.6 24.8 2.3" fill="none" stroke="#7C6A0A" stroke-width="1" stroke-linecap="round"/><circle cx="24.5" cy="2.2" r="1.1"/></g><g fill-rule="evenodd" transform="matrix(-1 0 0 1 64 0)"><path d="M30.9 21.2C28.4 13.9 22.4 6.3 13.2 2.9C8.3 1.1 3.9 1.9 2.8 5.1C1.8 8.1 3.7 12.8 7.9 16.6C12.6 20.8 21 23.3 30.5 24Z M28.6 20.2C23.3 14.6 16.8 9.4 9.4 6.4C16.9 10.4 23 15.4 27.7 21.1Z M27.9 22.4C21.6 19.6 14.2 17 7.6 12.4C13.8 17.6 20.8 20.9 27.3 23.3Z"/><path d="M30.5 25.8C24.6 26 17.7 28.4 14.5 33C11.5 37.4 12.4 43.3 16.7 44.3C21.8 45.5 27.7 38.5 31.1 28.2Z M29.3 27.6C24.7 29.8 19.7 34.3 16.5 40.3C20.3 35.2 25.1 30.8 29.7 28.6Z"/><path d="M31.3 12.6C30.3 8.3 28 4.6 24.8 2.3" fill="none" stroke="#7C6A0A" stroke-width="1" stroke-linecap="round"/><circle cx="24.5" cy="2.2" r="1.1"/></g><ellipse cx="32" cy="24.6" rx="1.5" ry="11.4"/><circle cx="32" cy="12.8" r="1.7"/></svg>`;
 
 const nav = (r) => `<nav>
   <a href="/" class="nav-logo">${BUTTERFLY}<div class="nav-logo-text">Mariposa Mental Wellness<span>Kayla Martinez, MS, LPC</span></div></a>
@@ -79,9 +79,9 @@ const head = (r, { title, desc, canonical, image, jsonld }) => `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="icon" href="${r}favicon.ico?v=5" sizes="any">
-<link rel="icon" href="${r}favicon-192.png?v=5" type="image/png">
-<link rel="apple-touch-icon" href="${r}apple-touch-icon.png?v=5">
+<link rel="icon" href="${r}favicon.ico?v=6" sizes="any">
+<link rel="icon" href="${r}favicon-192.png?v=6" type="image/png">
+<link rel="apple-touch-icon" href="${r}apple-touch-icon.png?v=6">
 <link rel="canonical" href="${canonical}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
