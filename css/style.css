@@ -110,7 +110,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 /* ── HERO — home full ── */
 .hero {
   min-height:100vh;
-  background:linear-gradient(to bottom, rgba(44,36,22,0.15) 0%, rgba(44,36,22,0.3) 40%, rgba(44,36,22,0.72) 100%), url('../images/hero.jpg') center/cover no-repeat;
+  background:linear-gradient(to bottom, rgba(44,36,22,0.15) 0%, rgba(44,36,22,0.3) 40%, rgba(44,36,22,0.72) 100%), url('../images/hero-home.jpg') center 60%/cover no-repeat;
   display:flex; align-items:flex-end;
   padding:0 60px 90px;
 }
@@ -124,20 +124,20 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .page-hero {
   height:460px;
   /* diagonal wash keeps the top-left headline crisp over any photo */
-  background:linear-gradient(100deg, rgba(38,29,17,0.80) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero.jpg') center 40%/cover no-repeat;
+  background:linear-gradient(100deg, rgba(38,29,17,0.80) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-home.jpg') center 40%/cover no-repeat;
   display:flex; align-items:flex-start;
   padding:120px 60px 0;
   box-sizing:border-box;
 }
 /* Distinct, theme-matched imagery per page */
-.page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.26) 100%), url('../images/hero-butterfly.jpg'); background-position:center 58%; }
-.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.68) 0%, rgba(38,29,17,0.4) 50%, rgba(38,29,17,0.24) 100%), url('../images/hero-room.jpg?v=2'); background-position:center 52%; }
-.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-mother.jpg?v=2'); background-position:center 42%; }
-.page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 55%, rgba(38,29,17,0.3) 100%), url('../images/hero-path.jpg'); background-position:center 60%; }
-.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.8) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-journal.jpg'); background-position:center 55%; }
-.page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-leaves.jpg'); background-position:center 50%; }
+.page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.26) 100%), url('../images/hero-about-chair.jpg'); background-position:center 55%; }
+.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.68) 0%, rgba(38,29,17,0.4) 50%, rgba(38,29,17,0.24) 100%), url('../images/hero-faq.jpg'); background-position:center 40%; }
+.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.84) 0%, rgba(38,29,17,0.6) 50%, rgba(38,29,17,0.42) 100%), url('../images/hero-linens.jpg'); background-position:center 60%; }
+.page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 55%, rgba(38,29,17,0.3) 100%), url('../images/blog/desert-glow.jpg'); background-position:center 70%; }
+.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.84) 0%, rgba(38,29,17,0.6) 50%, rgba(38,29,17,0.42) 100%), url('../images/hero-vessels.jpg'); background-position:70% 60%; }
+.page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-blog.jpg'); background-position:center 45%; }
 .page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(38,29,17,0.72) 0%, rgba(38,29,17,0.42) 52%, rgba(38,29,17,0.28) 100%), url('../images/hero-contact.jpg'); background-position:center 60%; }
-.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.7) 0%, rgba(38,29,17,0.4) 52%, rgba(38,29,17,0.24) 100%), url('../images/hero-faq.jpg'); background-position:center 45%; }
+.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.84) 0%, rgba(38,29,17,0.6) 50%, rgba(38,29,17,0.42) 100%), url('../images/hero-shadow.jpg'); background-position:center 40%; }
 .page-hero-inner { max-width:1200px; width:100%; }
 .breadcrumb { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:16px; }
 .breadcrumb a { color:rgba(255,255,255,0.65); transition:color 0.2s; }
@@ -530,7 +530,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
   .nav-links { display:none; }
   .hamburger { display:flex; }
 
-  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.5) 40%, rgba(44,36,22,0.88) 100%), url('../images/hero.jpg') center/cover no-repeat; }
+  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.5) 40%, rgba(44,36,22,0.88) 100%), url('../images/hero-home.jpg') center 60%/cover no-repeat; }
   .hero-inner { grid-template-columns:1fr; gap:28px; }
   .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
   .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
@@ -676,7 +676,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
 .form-status code { background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px; font-size:0.82em; }
 
 /* ── Blog ── */
-.hero-blog { background:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/hero-blog.jpg') center 45%/cover no-repeat; }
+.hero-blog { background:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/blog/journal-morning.jpg') center 45%/cover no-repeat; }
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:34px; }
 .blog-card { display:flex; flex-direction:column; background:#fff; border-radius:4px; overflow:hidden; text-decoration:none; box-shadow:0 2px 14px rgba(44,36,22,0.06); transition:transform .25s, box-shadow .25s; }
 .blog-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(44,36,22,0.12); }
@@ -710,3 +710,48 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
 .contact-detail .cd-label { font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mid); margin-bottom:3px; }
 .blog-card-body h2 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:500; color:var(--dark); line-height:1.2; }
 @media (max-width:767px) { .process-step h3 { font-size:1.1rem; } }
+
+/* ══════════════════════════════════════════════════════════
+   OCT 2026 POLISH: focus cards, pricing ledger, Instagram
+══════════════════════════════════════════════════════════ */
+
+/* Focus cards: no clip-art icons; a short warm rule leads each card instead */
+.service-icon { display:none; }
+.service-card { padding:44px 36px 40px; }
+.service-card h3 { font-size:1.5rem; font-weight:500; margin-bottom:12px; }
+.service-card h3::before { content:''; display:block; width:28px; height:1px; background:var(--burnt); margin-bottom:22px; }
+
+/* Pricing: one even ledger, three equal columns, hairline dividers */
+.fees-section { padding:96px 60px; background:var(--cream); }
+.fees-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0;
+  background:#fff; border:1px solid rgba(124,106,10,0.16); }
+.fee-card, .fee-card:nth-child(2) { background:none; text-align:left; padding:44px 40px 46px; }
+.fee-card + .fee-card { border-left:1px solid rgba(124,106,10,0.16); }
+.fee-num { font-size:2.6rem; white-space:nowrap; margin-bottom:14px; }
+.fee-card:nth-child(2) .fee-num { color:var(--burnt); }
+.fee-card h3 { margin-bottom:10px; }
+.fee-card p { font-size:0.9rem; }
+/* Nested inside the FAQ page's narrow column */
+.section .fees-section { padding:0; background:none; }
+
+/* Instagram: quiet inline proof, readable button, grid that never outgrows the column */
+.ig-community { grid-template-columns:minmax(0,1fr) minmax(0,440px); }
+.ig-meta { display:flex; gap:32px; margin:26px 0 30px; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--mid); }
+.ig-meta strong { display:block; font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; letter-spacing:0; text-transform:none; color:var(--burnt); line-height:1; margin-bottom:6px; }
+.ig-grid { width:100%; max-width:440px; justify-self:end; }
+.ig-post { aspect-ratio:4/5; }
+
+@media (max-width:1024px) {
+  .ig-community { grid-template-columns:1fr; }
+  .ig-grid { justify-self:start; max-width:520px; }
+  .fees-section { padding:72px 30px; }
+}
+@media (max-width:767px) {
+  .service-card { padding:34px 24px 32px; }
+  .fees-section { padding:56px 20px; }
+  .fees-inner { grid-template-columns:1fr; }
+  .fee-card, .fee-card:nth-child(2) { padding:30px 26px; }
+  .fee-card + .fee-card { border-left:0; border-top:1px solid rgba(124,106,10,0.16); }
+  .fee-num { font-size:2.2rem; }
+  .ig-grid { max-width:100%; }
+}
