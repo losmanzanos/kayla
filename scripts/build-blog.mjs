@@ -107,7 +107,7 @@ ${footer()}
 </html>`;
 
 /* ---------- helpers ---------- */
-const DEFAULT_IMG = "/images/blog/journal-morning.jpg";
+const DEFAULT_IMG = "/images/hero-blog.jpg";
 function crumbs(list) {
   return { "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: list.map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE + url })) };
@@ -170,8 +170,8 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   const body = `<section class="page-hero hero-blog">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a><span>/</span>Blog</div>
-    <h1>Notes from the practice</h1>
-    <p>Plain-spoken writing on anxiety, trauma, perfectionism, parts work, and the stretch of life where you're not who you were and not yet who you're becoming.</p>
+    <h1 class="reveal">Notes on <em>Healing</em></h1>
+    <p class="reveal">Honest, practical writing on anxiety, trauma, IFS, perfectionism, and motherhood.</p>
   </div>
 </section>
 <section style="background:var(--cream);">
@@ -180,7 +180,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   </div>
 </section>
 <div class="cta-band">
-  <h2>Rather talk it through?</h2>
+  <h2>Prefer to talk it through <em>in person?</em></h2>
   <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
   <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a></div>
 </div>`;
@@ -218,8 +218,8 @@ for (const p of posts) {
   const body = `<section class="page-hero hero-blog">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>Article</div>
-    <h1>${esc(p.data.title)}</h1>
-    <p>${fmtDate(p.data.date)} &middot; ${esc(p.data.author || "Kayla Martinez, MS, LPC")}</p>
+    <h1 class="reveal">${esc(p.data.title)}</h1>
+    <p class="reveal">${fmtDate(p.data.date)} &middot; ${esc(p.data.author || "Kayla Martinez, MS, LPC")}</p>
   </div>
 </section>
 <section style="background:white;">
@@ -227,13 +227,13 @@ for (const p of posts) {
     ${pic(img, p.data.imageAlt || p.data.title, 'class="post-hero-img"')}
     <article class="post-body">${p.html}</article>
     <div class="post-tags">${(p.data.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
-    <p style="margin-top:28px;"><a href="/blog/" class="text-link">&larr; All posts</a></p>
+    <a href="/blog/" class="btn-outline" style="margin-top:20px;display:inline-block;">&larr; All Posts</a>
   </div>
 </section>
 <div class="cta-band">
-  <h2>When you're ready, I'm here.</h2>
+  <h2>Ready to take <em>the first step?</em></h2>
   <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
-  <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a><a href="/services/" class="text-link">See how I work</a></div>
+  <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a><a href="/services/" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;">Explore Services</a></div>
 </div>`;
 
   const page = head(r, {
