@@ -107,7 +107,7 @@ ${footer()}
 </html>`;
 
 /* ---------- helpers ---------- */
-const DEFAULT_IMG = "/images/blog/journal-morning.jpg";
+const DEFAULT_IMG = "/images/blog/journal-morning-g.jpg";
 function crumbs(list) {
   return { "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: list.map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE + url })) };
