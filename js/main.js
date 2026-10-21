@@ -172,3 +172,23 @@ document.querySelectorAll('.faq-question').forEach(function(q){
     }
   });
 })();
+
+/* Mobile booking bar: injected once, revealed after the visitor scrolls past the hero */
+(function () {
+  if (/\/contact\/?$/.test(location.pathname)) return; // the contact page is already the form
+  var bar = document.createElement('div');
+  bar.className = 'book-bar';
+  bar.setAttribute('aria-label', 'Quick booking');
+  bar.innerHTML = '<a class="bb-call" href="tel:+14806050846">Call</a><a class="bb-book" href="/contact/">Book a free consult</a>';
+  document.body.appendChild(bar);
+  document.body.classList.add('has-book-bar');
+  if (location.pathname.indexOf('/kayla') === 0) bar.querySelector('.bb-book').setAttribute('href', '/kayla/contact/');
+  var hero = document.querySelector('.hero, .page-hero');
+  function check() {
+    var limit = hero ? hero.offsetHeight * 0.8 : 300;
+    var nearEnd = window.innerHeight + window.scrollY > document.body.scrollHeight - 140;
+    bar.classList.toggle('show', window.scrollY > limit && !nearEnd);
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  check();
+})();

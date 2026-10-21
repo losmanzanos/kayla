@@ -755,3 +755,42 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
   .fee-num { font-size:2.2rem; }
   .ig-grid { max-width:100%; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   FINISHING DETAILS
+══════════════════════════════════════════════════════════ */
+h1, h2, h3, .hero-headline, .section-title { text-wrap:balance; }
+p, li { text-wrap:pretty; }
+::selection { background:var(--blush); color:var(--dark); }
+
+/* Home hero: the photo settles in slowly on load */
+.hero { position:relative; overflow:hidden; isolation:isolate; }
+.hero::before { content:''; position:absolute; inset:0; z-index:-1; background:inherit; transform-origin:60% 55%;
+  animation:heroSettle 14s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes heroSettle { from { transform:scale(1.07); } to { transform:scale(1); } }
+
+/* Mobile booking bar: appears after the hero, never covers the footer */
+.book-bar { display:none; }
+@media (max-width:767px) {
+  .book-bar { display:flex; position:fixed; left:0; right:0; bottom:0; z-index:180;
+    background:rgba(250,246,241,0.97); backdrop-filter:blur(8px); border-top:1px solid rgba(124,106,10,0.15);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom)); gap:10px;
+    transform:translateY(110%); transition:transform .35s ease; }
+  .book-bar.show { transform:none; }
+  .book-bar a { flex:1; text-align:center; padding:13px 10px; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; }
+  .book-bar .bb-book { background:var(--burnt); color:#fff; }
+  .book-bar .bb-call { flex:0 0 34%; border:1px solid rgba(124,106,10,0.3); color:var(--dark); }
+  body.has-book-bar footer { padding-bottom:110px; }
+}
+
+/* Footer credit */
+.site-credit { color:rgba(255,255,255,0.4); }
+.site-credit a { color:rgba(255,255,255,0.55); }
+.site-credit a:hover { color:var(--amber); }
+
+@media (prefers-reduced-motion:reduce) {
+  .hero::before { animation:none; }
+  .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+  .book-bar { transition:none; }
+  html { scroll-behavior:auto; }
+}
