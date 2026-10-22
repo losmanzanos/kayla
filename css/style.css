@@ -110,7 +110,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 /* ── HERO — home full ── */
 .hero {
   min-height:100vh;
-  background:linear-gradient(to bottom, rgba(44,36,22,0.04) 0%, rgba(44,36,22,0.14) 42%, rgba(44,36,22,0.66) 100%), url('../images/hero-butterfly-wide-g.jpg') center 45%/cover no-repeat;
+  background:linear-gradient(to bottom, rgba(44,36,22,0.04) 0%, rgba(44,36,22,0.14) 42%, rgba(44,36,22,0.66) 100%), url('../images/hero-butterfly-wide-w.jpg') center 45%/cover no-repeat;
   display:flex; align-items:flex-end;
   padding:0 60px 90px;
 }
@@ -124,20 +124,20 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(44,36,22,0.08); }
 .page-hero {
   height:460px;
   /* diagonal wash keeps the top-left headline crisp over any photo */
-  background:linear-gradient(100deg, rgba(38,29,17,0.80) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-butterfly-wide-g.jpg') center 40%/cover no-repeat;
+  background:linear-gradient(100deg, rgba(38,29,17,0.80) 0%, rgba(38,29,17,0.5) 48%, rgba(38,29,17,0.34) 100%), url('../images/hero-butterfly-wide-w.jpg') center 40%/cover no-repeat;
   display:flex; align-items:flex-start;
   padding:120px 60px 0;
   box-sizing:border-box;
 }
 /* Distinct, theme-matched imagery per page */
-.page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-niches-g.jpg'); background-position:center 50%; }
-.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-armchair-g.jpg'); background-position:center 45%; }
-.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-linens-g.jpg'); background-position:center 60%; }
-.page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-curtains-g.jpg'); background-position:center 50%; }
-.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-vessels-g.jpg'); background-position:70% 60%; }
-.page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-palm-g.jpg'); background-position:center 50%; }
-.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-sheer-g.jpg'); background-position:center 50%; }
-.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.46) 50%, rgba(38,29,17,0.28) 100%), url('../images/hero-arches-g.jpg'); background-position:center 55%; }
+.page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-niches-w.jpg'); background-position:center 50%; }
+.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-armchair-w.jpg'); background-position:center 45%; }
+.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-linens-w.jpg'); background-position:center 60%; }
+.page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-curtains-w.jpg'); background-position:center 50%; }
+.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-vessels-w.jpg'); background-position:70% 60%; }
+.page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-palm-w.jpg'); background-position:center 50%; }
+.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-sheer-w.jpg'); background-position:center 50%; }
+.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/hero-arches-w.jpg'); background-position:center 55%; }
 .page-hero-inner { max-width:1200px; width:100%; }
 .breadcrumb { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:16px; }
 .breadcrumb a { color:rgba(255,255,255,0.65); transition:color 0.2s; }
@@ -530,7 +530,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
   .nav-links { display:none; }
   .hamburger { display:flex; }
 
-  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.5) 40%, rgba(44,36,22,0.88) 100%), url('../images/hero-butterfly-mobile-g.jpg') center top/cover no-repeat; }
+  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.5) 40%, rgba(44,36,22,0.88) 100%), url('../images/hero-butterfly-mobile-w.jpg') center top/cover no-repeat; }
   .hero-inner { grid-template-columns:1fr; gap:28px; }
   .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
   .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
@@ -676,7 +676,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
 .form-status code { background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px; font-size:0.82em; }
 
 /* ── Blog ── */
-.hero-blog { background:linear-gradient(100deg, rgba(38,29,17,0.74) 0%, rgba(38,29,17,0.44) 52%, rgba(38,29,17,0.3) 100%), url('../images/blog/journal-morning-g.jpg') center 45%/cover no-repeat; }
+.hero-blog { background:linear-gradient(100deg, rgba(38,29,17,0.62) 0%, rgba(38,29,17,0.34) 48%, rgba(38,29,17,0.12) 100%), url('../images/blog/journal-morning-w.jpg') center 45%/cover no-repeat; }
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:34px; }
 .blog-card { display:flex; flex-direction:column; background:#fff; border-radius:4px; overflow:hidden; text-decoration:none; box-shadow:0 2px 14px rgba(44,36,22,0.06); transition:transform .25s, box-shadow .25s; }
 .blog-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(44,36,22,0.12); }
@@ -822,3 +822,69 @@ p, li { text-wrap:pretty; }
 .kayla-section .btn-outline { margin-top:8px; }
 @media (max-width:1024px) { .help-section { padding:80px 30px; } .help-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:767px) { .help-section { padding:64px 20px; } .help-grid { grid-template-columns:1fr; } .process-steps--three { grid-template-columns:1fr; } }
+
+/* ══════════════════════════════════════════════════════════
+   LIGHT & MINIMAL PASS
+   Two light neutrals (cream, sand), one accent (burnt), ink for text.
+══════════════════════════════════════════════════════════ */
+:root { --sand:#F3ECE3; --ink:#2C2416; --rule-light:rgba(44,36,22,0.12); }
+
+/* Section backgrounds: retire the heavy sage / olive / blush / orange blocks */
+.kayla-section, .instagram-section, .process-section, .contact-section { background:var(--sand); }
+.help-section, .services-section, .fees-section { background:var(--cream); }
+.process-section { background:var(--cream); }
+.instagram-section { background:var(--sand); }
+.strip { background:var(--cream); color:var(--mid); border-top:1px solid var(--rule-light); border-bottom:1px solid var(--rule-light); }
+.strip a { color:var(--ink); }
+
+/* Headings: italic words stay italic but in ink, not olive */
+.section-title em, .service-detail h2 em, .cta-band h2 em { color:inherit; }
+
+/* Buttons: burnt for the one primary action, ink outline for everything else */
+.btn-outline { border-color:rgba(44,36,22,0.55); color:var(--ink); }
+.btn-outline:hover { background:var(--ink); border-color:var(--ink); color:#fff; }
+.btn-primary:hover { background:var(--ink); }
+
+/* Small text: readable weight and contrast */
+.help-item p, .process-step p, .service-card p, .value-card p, .modality-item p, .fee-card p,
+.faq-answer p, .service-sidebar li, .contact-detail p, .contact-detail a, .ig-meta { font-weight:400; color:#5E5240; }
+.body-text { color:#5E5240; }
+
+/* Quote: quiet, no white box */
+.kayla-quote { background:transparent; border-left:2px solid var(--burnt); padding:6px 0 6px 26px; }
+
+/* Process cards: white on cream, hairline instead of grey gutters */
+.process-steps { background:transparent; gap:16px; }
+.process-step { border:1px solid var(--rule-light); }
+
+/* Inner-page closing band: light, not a full orange slab */
+.cta-band { background:var(--sand); border-top:1px solid var(--rule-light); }
+.cta-band h2 { color:var(--ink); }
+.cta-band p { color:#5E5240; }
+.cta-band .btn-white { background:var(--burnt); color:#fff; }
+.cta-band .btn-white:hover { background:var(--ink); color:#fff; }
+.cta-band .btn-outline { border-color:rgba(44,36,22,0.55) !important; color:var(--ink) !important; }
+.cta-band .btn-outline:hover { background:var(--ink) !important; color:#fff !important; }
+
+/* Mothers band and story band: light versions */
+.niche-section { background:var(--sand) !important; }
+.niche-section .section-title, .story-section .section-title { color:var(--ink); }
+.niche-section .eyebrow, .story-section .eyebrow { color:var(--burnt); }
+.niche-section .body-text, .story-section .body-text { color:#5E5240 !important; }
+.niche-checklist li { color:#5E5240; border-bottom-color:var(--rule-light); }
+.niche-checklist li::before { color:var(--burnt); }
+.story-section { background:var(--cream); border-top:1px solid var(--rule-light); border-bottom:1px solid var(--rule-light); }
+.story-section .btn-white { background:var(--burnt); color:#fff; }
+.story-butterfly svg { fill:var(--olive) !important; }
+.story-butterfly svg [stroke="#FFDAC6"] { stroke:var(--olive); }
+
+/* Sidebars and focus cards */
+.service-sidebar { background:var(--sand); }
+.service-card { border:1px solid var(--rule-light); }
+.services-grid { background:transparent; gap:16px; }
+/* Light pass, part 2: sections that set heavy backgrounds inline, and pale accent words */
+section[style*="background:var(--blush)"], div[style*="background:var(--blush)"],
+section[style*="background:var(--sage)"] { background:var(--sand) !important; }
+.niche-section .section-title em, .story-section .section-title em, .kayla-section .section-title em { color:inherit !important; }
+.page-hero h1 em { color:inherit; }
+.cta-band .eyebrow { color:var(--burnt); }
