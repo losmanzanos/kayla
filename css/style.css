@@ -888,3 +888,15 @@ section[style*="background:var(--sage)"] { background:var(--sand) !important; }
 .niche-section .section-title em, .story-section .section-title em, .kayla-section .section-title em { color:inherit !important; }
 .page-hero h1 em { color:inherit; }
 .cta-band .eyebrow { color:var(--burnt); }
+
+/* Corner consistency: square everywhere (only the small contact icons stay round) */
+.nav-cta, .mobile-menu .m-cta, .btn-primary, .btn-outline, .btn-white, .about-img img, .about-img-accent,
+.service-sidebar, .niche-img img, .kayla-photo, .kayla-photo img, .home-form-wrap, .contact-form-wrap,
+.form-field input, .form-field textarea, .form-field select, .form-group input, .form-group select, .form-group textarea,
+.home-form-wrap .form-field input, .home-form-wrap .form-field textarea, .home-form-wrap .form-field select,
+.contact-info-card, .ci-icon, .contact-fees-box, .contact-crisis-box, .blog-card, .blog-card-img, .post-hero-img,
+.post-tags span, .ig-grid, .ig-post, .form-status.success, .form-status.error, .book-bar a, .nav-dropdown {
+  border-radius:0 !important;
+}
+.home-form-wrap, .contact-form-wrap { box-shadow:none; border:1px solid var(--rule-light); }
+.contact-info-card { box-shadow:none; border:1px solid var(--rule-light); }
