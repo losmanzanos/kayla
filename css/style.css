@@ -110,7 +110,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(43,46,34,0.08); }
 /* ── HERO — home full ── */
 .hero {
   min-height:100vh;
-  background:linear-gradient(to bottom, rgba(43,46,34,0.04) 0%, rgba(43,46,34,0.14) 42%, rgba(43,46,34,0.66) 100%), url('../images/hero-butterfly-wide-w.jpg') center 45%/cover no-repeat;
+  background:linear-gradient(to bottom, rgba(43,46,34,0.04) 0%, rgba(43,46,34,0.14) 42%, rgba(43,46,34,0.66) 100%), url('../images/lt-butterfly-wide.jpg') center 45%/cover no-repeat;
   display:flex; align-items:flex-end;
   padding:0 60px 90px;
 }
@@ -124,20 +124,20 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(43,46,34,0.08); }
 .page-hero {
   height:460px;
   /* diagonal wash keeps the top-left headline crisp over any photo */
-  background:linear-gradient(100deg, rgba(37,40,29,0.80) 0%, rgba(37,40,29,0.5) 48%, rgba(37,40,29,0.34) 100%), url('../images/hero-butterfly-wide-w.jpg') center 40%/cover no-repeat;
+  background:linear-gradient(100deg, rgba(37,40,29,0.80) 0%, rgba(37,40,29,0.5) 48%, rgba(37,40,29,0.34) 100%), url('../images/lt-butterfly-wide.jpg') center 40%/cover no-repeat;
   display:flex; align-items:flex-start;
   padding:120px 60px 0;
   box-sizing:border-box;
 }
 /* Distinct, theme-matched imagery per page */
-.page-hero.hero-about   { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-niches-w.jpg'); background-position:center 50%; }
-.page-hero.hero-services{ background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-armchair-w.jpg'); background-position:center 45%; }
-.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-linens-w.jpg'); background-position:center 60%; }
-.page-hero.hero-path    { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-curtains-w.jpg'); background-position:center 50%; }
-.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-vessels-w.jpg'); background-position:70% 60%; }
-.page-hero.hero-leaves  { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-palm-w.jpg'); background-position:center 50%; }
-.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-sheer-w.jpg'); background-position:center 50%; }
-.page-hero.hero-faq     { background-image:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/hero-arches-w.jpg'); background-position:center 55%; }
+.page-hero.hero-about { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-about.jpg'); background-position:center 60%; }
+.page-hero.hero-services { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-services.jpg'); background-position:right 40%; }
+.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-linens.jpg'); background-position:center 60%; }
+.page-hero.hero-path { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-trauma.jpg'); background-position:center 50%; }
+.page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-vessels.jpg'); background-position:70% 55%; }
+.page-hero.hero-leaves { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-emdr.jpg'); background-position:center 40%; }
+.page-hero.hero-contact { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-contact.jpg'); background-position:center 60%; }
+.page-hero.hero-faq { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-faq.jpg'); background-position:right 45%; }
 .page-hero-inner { max-width:1200px; width:100%; }
 .breadcrumb { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:16px; }
 .breadcrumb a { color:rgba(255,255,255,0.65); transition:color 0.2s; }
@@ -530,7 +530,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
   .nav-links { display:none; }
   .hamburger { display:flex; }
 
-  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(43,46,34,0.2) 0%, rgba(43,46,34,0.5) 40%, rgba(43,46,34,0.88) 100%), url('../images/hero-butterfly-mobile-w.jpg') center top/cover no-repeat; }
+  .hero { padding:0 20px 110px; min-height:100svh; background:linear-gradient(to bottom, rgba(43,46,34,0.2) 0%, rgba(43,46,34,0.5) 40%, rgba(43,46,34,0.88) 100%), url('../images/lt-butterfly-mobile.jpg') center top/cover no-repeat; }
   .hero-inner { grid-template-columns:1fr; gap:28px; }
   .hero-headline { font-size:clamp(2.2rem,9vw,3.2rem); }
   .hero-right { border-left:none; padding-left:0; border-top:1px solid rgba(255,218,198,0.35); padding-top:24px; }
@@ -676,7 +676,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--burnt); outline-
 .form-status code { background:rgba(0,0,0,0.06); padding:1px 5px; border-radius:3px; font-size:0.82em; }
 
 /* ── Blog ── */
-.hero-blog { background:linear-gradient(100deg, rgba(37,40,29,0.62) 0%, rgba(37,40,29,0.34) 48%, rgba(37,40,29,0.12) 100%), url('../images/blog/journal-morning-w.jpg') center 45%/cover no-repeat; }
+.hero-blog { background:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/lt-blog.jpg') center 50%/cover no-repeat; }
 .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:34px; }
 .blog-card { display:flex; flex-direction:column; background:#fff; border-radius:4px; overflow:hidden; text-decoration:none; box-shadow:0 2px 14px rgba(43,46,34,0.06); transition:transform .25s, box-shadow .25s; }
 .blog-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(43,46,34,0.12); }
@@ -997,3 +997,24 @@ section[style*="background:var(--sage)"] { background:var(--sage-wash) !importan
 footer { background:#2B2E22; }
 .footer-col a:hover, .footer-bottom a, footer a[style*="amber"] { color:var(--sage) !important; }
 ::selection { background:var(--sage-wash); color:var(--ink); }
+
+
+/* ══════════════════════════════════════════════════════════
+   LIGHT HEROES: cream fade + ink type (airy, feminine)
+══════════════════════════════════════════════════════════ */
+.hero { background:linear-gradient(100deg, rgba(250,248,243,0.92) 0%, rgba(250,248,243,0.7) 32%, rgba(250,248,243,0.1) 58%, rgba(250,248,243,0) 75%), url('../images/lt-butterfly-wide.jpg') center 45%/cover no-repeat !important; }
+.hero-headline, .page-hero h1 { color:var(--ink) !important; text-shadow:none !important; }
+.hero-right p, .page-hero p { color:#4F523F !important; text-shadow:none !important; }
+.hero-right { border-top-color:rgba(43,46,34,0.18) !important; border-left-color:rgba(43,46,34,0.18) !important; }
+.breadcrumb, .breadcrumb a { color:var(--mid) !important; }
+.breadcrumb a:hover { color:var(--olive) !important; }
+.page-hero { border-bottom:1px solid var(--rule-light); }
+@media (max-width:767px) {
+  .hero { background:linear-gradient(to bottom, rgba(250,248,243,0) 0%, rgba(250,248,243,0.35) 34%, rgba(250,248,243,0.9) 58%, rgba(250,248,243,0.97) 100%), url('../images/lt-butterfly-mobile.jpg') center top/cover no-repeat !important; }
+  .page-hero.hero-about, .page-hero.hero-services, .page-hero.hero-mothers, .page-hero.hero-path, .page-hero.hero-journal,
+  .page-hero.hero-leaves, .page-hero.hero-faq, .page-hero.hero-contact, .hero-blog {
+    background-blend-mode:normal; }
+  .page-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(250,248,243,0.9) 0%, rgba(250,248,243,0.7) 55%, rgba(250,248,243,0.2) 100%); pointer-events:none; }
+  .page-hero { position:relative; }
+  .page-hero-inner { position:relative; z-index:1; }
+}
