@@ -22,7 +22,7 @@ marked.setOptions({ mangle: false, headerIds: true });
 const BUTTERFLY = `<svg width="32" height="24" viewBox="0 0 64 48" fill="#7C6A0A" aria-hidden="true"><g fill-rule="evenodd"><path d="M30.9 21.2C28.4 13.9 22.4 6.3 13.2 2.9C8.3 1.1 3.9 1.9 2.8 5.1C1.8 8.1 3.7 12.8 7.9 16.6C12.6 20.8 21 23.3 30.5 24Z M28.6 20.2C23.3 14.6 16.8 9.4 9.4 6.4C16.9 10.4 23 15.4 27.7 21.1Z M27.9 22.4C21.6 19.6 14.2 17 7.6 12.4C13.8 17.6 20.8 20.9 27.3 23.3Z"/><path d="M30.5 25.8C24.6 26 17.7 28.4 14.5 33C11.5 37.4 12.4 43.3 16.7 44.3C21.8 45.5 27.7 38.5 31.1 28.2Z M29.3 27.6C24.7 29.8 19.7 34.3 16.5 40.3C20.3 35.2 25.1 30.8 29.7 28.6Z"/><path d="M31.3 12.6C30.3 8.3 28 4.6 24.8 2.3" fill="none" stroke="#7C6A0A" stroke-width="1" stroke-linecap="round"/><circle cx="24.5" cy="2.2" r="1.1"/></g><g fill-rule="evenodd" transform="matrix(-1 0 0 1 64 0)"><path d="M30.9 21.2C28.4 13.9 22.4 6.3 13.2 2.9C8.3 1.1 3.9 1.9 2.8 5.1C1.8 8.1 3.7 12.8 7.9 16.6C12.6 20.8 21 23.3 30.5 24Z M28.6 20.2C23.3 14.6 16.8 9.4 9.4 6.4C16.9 10.4 23 15.4 27.7 21.1Z M27.9 22.4C21.6 19.6 14.2 17 7.6 12.4C13.8 17.6 20.8 20.9 27.3 23.3Z"/><path d="M30.5 25.8C24.6 26 17.7 28.4 14.5 33C11.5 37.4 12.4 43.3 16.7 44.3C21.8 45.5 27.7 38.5 31.1 28.2Z M29.3 27.6C24.7 29.8 19.7 34.3 16.5 40.3C20.3 35.2 25.1 30.8 29.7 28.6Z"/><path d="M31.3 12.6C30.3 8.3 28 4.6 24.8 2.3" fill="none" stroke="#7C6A0A" stroke-width="1" stroke-linecap="round"/><circle cx="24.5" cy="2.2" r="1.1"/></g><ellipse cx="32" cy="24.6" rx="1.5" ry="11.4"/><circle cx="32" cy="12.8" r="1.7"/></svg>`;
 
 const nav = (r) => `<nav>
-  <a href="/" class="nav-logo">${BUTTERFLY}<div class="nav-logo-text">Mariposa Mental Wellness<span>Kayla Martinez, MS, LPC</span></div></a>
+  <a href="/" class="nav-logo">${BUTTERFLY}<div class="nav-logo-text">Mariposa<span>Mental Wellness</span></div></a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/about/">About</a></li>
@@ -42,7 +42,7 @@ const nav = (r) => `<nav>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-  <div class="mobile-menu-brand">${BUTTERFLY}<p class="mobile-menu-brand-name">Mariposa Mental Wellness</p><p class="mobile-menu-brand-sub">Kayla Martinez, MS, LPC</p></div>
+  <div class="mobile-menu-brand">${BUTTERFLY}<p class="mobile-menu-brand-name">Mariposa</p><p class="mobile-menu-brand-sub">Mental Wellness &middot; Kayla Martinez, LPC</p></div>
   <a href="/">Home</a>
   <a href="/about/">About</a>
   <a href="/services/">Services</a>
