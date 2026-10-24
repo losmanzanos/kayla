@@ -11,3 +11,6 @@ admin/
 
 # Cloudflare Pages output (built by npm run build)
 dist/
+
+# Other clients' previews live on therapistweb.design, never in this repo
+work/
