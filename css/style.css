@@ -132,7 +132,7 @@ nav.scrolled { padding:14px 60px; box-shadow:0 2px 24px rgba(43,46,34,0.08); }
 /* Distinct, theme-matched imagery per page */
 .page-hero.hero-about { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-about.jpg'); background-position:center 55%; }
 .page-hero.hero-services { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-services.jpg'); background-position:center 45%; }
-.page-hero.hero-mothers { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-mothers.jpg'); background-position:center 50%; }
+.page-hero.hero-women { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-women.jpg'); background-position:center 50%; }
 .page-hero.hero-path { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-trauma.jpg'); background-position:center 60%; }
 .page-hero.hero-journal { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-ifs.jpg'); background-position:center 55%; }
 .page-hero.hero-leaves { background-image:linear-gradient(100deg, rgba(250,248,243,0.94) 0%, rgba(250,248,243,0.78) 38%, rgba(250,248,243,0.25) 62%, rgba(250,248,243,0) 80%), url('../images/rd-emdr.jpg'); background-position:center 50%; }
@@ -1014,7 +1014,7 @@ footer { background:#2B2E22; }
   .hero { min-height:0 !important; padding:118vw 20px 60px !important; align-items:flex-start !important;
     background:linear-gradient(to bottom, rgba(250,248,243,0) 0, rgba(250,248,243,0) 82vw, rgba(250,248,243,0.88) 110vw, #FAF8F3 124vw), url('../images/rd-butterfly-mobile.jpg') center -10vw/100% auto no-repeat, #FAF8F3 !important; }
   .hero-inner { gap:24px !important; }
-  .page-hero.hero-about, .page-hero.hero-services, .page-hero.hero-mothers, .page-hero.hero-path, .page-hero.hero-journal,
+  .page-hero.hero-about, .page-hero.hero-services, .page-hero.hero-women, .page-hero.hero-path, .page-hero.hero-journal,
   .page-hero.hero-leaves, .page-hero.hero-faq, .page-hero.hero-contact, .hero-blog {
     background-blend-mode:normal; }
   .page-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(250,248,243,0.9) 0%, rgba(250,248,243,0.7) 55%, rgba(250,248,243,0.2) 100%); pointer-events:none; }
@@ -1045,8 +1045,11 @@ h1, h2, h3, .hero-headline, .section-title, .page-hero h1, .cta-band h2, .statem
 .footer-logo svg { width:24px; height:18px; }
 .kayla-quote p { font-family:'Petrona',serif; font-style:italic; font-weight:300; font-size:1.22rem; line-height:1.6; }
 
-.page-hero.hero-mothers { background-position:center 50%; }
+.page-hero.hero-women { background-position:center 50%; }
 .page-hero.hero-services { background-position:center 50%; }
 
 /* Site Info: office on/off blocks are toggled with the hidden attribute at build time */
 [hidden] { display:none !important; }
+
+/* For Women page: maternal section, white with the photo on the left */
+.niche-section.niche-mothers { background:#fff !important; border-top:1px solid var(--rule-light); }

@@ -1,3 +1,5 @@
 # Cloudflare Pages redirects. 404.html is served automatically for unmatched routes.
 # Example (uncomment if you ever rename a page):
 # /old-path  /new-path  301
+/therapy-for-mothers-mesa-az/  /therapy-for-women-mesa-az/  301
+/therapy-for-mothers-mesa-az  /therapy-for-women-mesa-az/  301

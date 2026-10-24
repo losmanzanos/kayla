@@ -3,7 +3,7 @@
   "homeHeroMobile": "/images/rd-butterfly-mobile.jpg",
   "aboutHero": "/images/rd-about.jpg",
   "servicesHero": "/images/rd-services.jpg",
-  "mothersHero": "/images/rd-mothers.jpg",
+  "womenHero": "/images/rd-women.jpg",
   "traumaHero": "/images/rd-trauma.jpg",
   "ifsHero": "/images/rd-ifs.jpg",
   "emdrHero": "/images/rd-emdr.jpg",
@@ -12,5 +12,6 @@
   "blogHero": "/images/rd-blog.jpg",
   "kaylaPortrait": "/images/kayla.jpg",
   "kaylaCandid": "/images/kayla-candid.jpg",
+  "womenIntro": "/images/rd-women-intro.jpg",
   "mothersSection": "/images/rd-niche.jpg"
 }
