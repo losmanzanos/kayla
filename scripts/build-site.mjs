@@ -43,7 +43,7 @@ const jsonStr = (s) => s.replace(/"/g, '\\"');
 function collectHtml(dir) {
   let out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if ([".git", "node_modules", "admin", "work"].includes(e.name)) continue;   // work/ holds other previews: never touch
+    if ([".git", "node_modules", "admin", "work", "emailjs-template.html"].includes(e.name)) continue;   // work/ holds other previews; the email template has its own {{placeholders}}
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out = out.concat(collectHtml(p));
     else if (e.name.endsWith(".html") || e.name === "llms.txt") out.push(p);

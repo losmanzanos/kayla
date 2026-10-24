@@ -17,9 +17,9 @@ function sitePhone() {
   'use strict';
 
   var EMAILJS_CONFIG = {
-    publicKey:  'YOUR_EMAILJS_PUBLIC_KEY',   // <-- replace
-    serviceId:  'YOUR_EMAILJS_SERVICE_ID',   // <-- replace
-    templateId: 'YOUR_EMAILJS_TEMPLATE_ID'   // <-- replace
+    publicKey:  '9lP4IikwloqJ7CJlp',        // EmailJS account (hellomariposamw)
+    serviceId:  'service_mariposa',          // Gmail service
+    templateId: 'template_consult'           // "Mariposa consultation request"
   };
 
   var form = document.getElementById('contact-form');
