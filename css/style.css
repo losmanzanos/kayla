@@ -1010,7 +1010,10 @@ footer { background:#2B2E22; }
 .breadcrumb a:hover { color:var(--olive) !important; }
 .page-hero { border-bottom:1px solid var(--rule-light); }
 @media (max-width:767px) {
-  .hero { background:linear-gradient(to bottom, rgba(250,248,243,0) 0%, rgba(250,248,243,0.35) 34%, rgba(250,248,243,0.9) 58%, rgba(250,248,243,0.97) 100%), url('../images/rd-butterfly-mobile.jpg') center 18%/cover no-repeat !important; }
+  /* Photo sits on top, fades to cream; copy starts below the butterfly instead of over it */
+  .hero { min-height:0 !important; padding:118vw 20px 60px !important; align-items:flex-start !important;
+    background:linear-gradient(to bottom, rgba(250,248,243,0) 0, rgba(250,248,243,0) 82vw, rgba(250,248,243,0.88) 110vw, #FAF8F3 124vw), url('../images/rd-butterfly-mobile.jpg') center -10vw/100% auto no-repeat, #FAF8F3 !important; }
+  .hero-inner { gap:24px !important; }
   .page-hero.hero-about, .page-hero.hero-services, .page-hero.hero-mothers, .page-hero.hero-path, .page-hero.hero-journal,
   .page-hero.hero-leaves, .page-hero.hero-faq, .page-hero.hero-contact, .hero-blog {
     background-blend-mode:normal; }
