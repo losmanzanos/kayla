@@ -24,7 +24,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "images/uploads", // every upload from the editor lands in /images/uploads
+      mediaRoot: "images", // the editor can see and pick every site photo; new uploads land in /images
       publicFolder: ".",
     },
   },

@@ -1053,3 +1053,7 @@ h1, h2, h3, .hero-headline, .section-title, .page-hero h1, .cta-band h2, .statem
 
 /* For Women page: maternal section, white with the photo on the left */
 .niche-section.niche-mothers { background:#fff !important; border-top:1px solid var(--rule-light); }
+
+/* Contact form: never wider than the phone (long select options were pushing it out) */
+.contact-layout > *, .form-row > *, .home-contact-grid > * { min-width:0; }
+.contact-form select, .contact-form input, .contact-form textarea { max-width:100%; width:100%; }
