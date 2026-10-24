@@ -54,7 +54,7 @@ npm run blog           # rebuilds /blog/index.html and each /blog/<slug>/
 
 ## Deploy (Cloudflare Pages): when approved
 
-- Framework preset: **None** · Build command: `npm run build` · Output dir: `dist` · Env: `NODE_VERSION=20`, `NEXT_PUBLIC_TINA_CLIENT_ID`, `TINA_TOKEN`
+- Framework preset: **None** · Build command: `npm run build` · Output dir: `dist` · Env: `NODE_VERSION=22`, `NEXT_PUBLIC_TINA_CLIENT_ID`, `TINA_TOKEN`
 - (Or, since the blog is pre-built, you can deploy with no build step at all.)
 
 ---
