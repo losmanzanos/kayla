@@ -10,8 +10,9 @@
     "serve": "node scripts/serve.mjs",
     "dev": "npm run blog && npm run siteinfo && npm run photos && npm run serve",
     "tina": "tinacms dev -c \"node scripts/serve.mjs\"",
-    "build": "tinacms build && npm run blog && npm run siteinfo && npm run photos",
-    "photos": "node scripts/build-photos.mjs"
+    "build": "tinacms build && npm run blog && npm run siteinfo && npm run photos && npm run dist",
+    "photos": "node scripts/build-photos.mjs",
+    "dist": "node scripts/dist.mjs"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.0",

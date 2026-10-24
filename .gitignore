@@ -8,3 +8,6 @@ tina/__generated__/
 admin/
 .env
 .DS_Store
+
+# Cloudflare Pages output (built by npm run build)
+dist/
