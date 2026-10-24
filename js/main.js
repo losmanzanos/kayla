@@ -179,7 +179,10 @@ document.querySelectorAll('.faq-question').forEach(function(q){
   var bar = document.createElement('div');
   bar.className = 'book-bar';
   bar.setAttribute('aria-label', 'Quick booking');
-  bar.innerHTML = '<a class="bb-call" href="tel:+14806050846">Call</a><a class="bb-book" href="/contact/">Book a free consult</a>';
+  // phone comes from the page itself (Site Info writes it into every footer)
+  var telLink = document.querySelector('footer a[href^="tel:+"]');
+  var tel = telLink ? telLink.getAttribute('href') : 'tel:+16028057017';
+  bar.innerHTML = '<a class="bb-call" href="' + tel + '">Call</a><a class="bb-book" href="/contact/">Book a free consult</a>';
   document.body.appendChild(bar);
   document.body.classList.add('has-book-bar');
   if (location.pathname.indexOf('/kayla') === 0) bar.querySelector('.bb-book').setAttribute('href', '/kayla/contact/');

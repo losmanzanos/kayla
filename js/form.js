@@ -1,3 +1,8 @@
+// Phone number shown in error messages comes from the footer (kept current by Site Info)
+function sitePhone() {
+  var a = document.querySelector('footer a[href^="tel:+"]');
+  return a ? a.textContent.trim() : 'the number below';
+}
 /* Mariposa Mental Wellness, contact form handler (EmailJS)
    ------------------------------------------------------------------
    SETUP (one-time, in the EmailJS dashboard at https://dashboard.emailjs.com):
@@ -56,7 +61,7 @@
     }
 
     if (!initEmailJS()) {
-      setStatus('error', "Something went wrong loading the mailer. Please call or text (480) 605-0846.");
+      setStatus('error', "Something went wrong loading the mailer. Please call or text " + sitePhone() + ".");
       return;
     }
 
@@ -70,7 +75,7 @@
       })
       .catch(function (err) {
         console.error('EmailJS error:', err);
-        setStatus('error', "Sorry, that didn't send. Please try again, or call/text (480) 605-0846.");
+        setStatus('error', "Sorry, that didn't send. Please try again, or call or text " + sitePhone() + ".");
       })
       .finally(function () {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }
