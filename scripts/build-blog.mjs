@@ -15,6 +15,9 @@ const ROOT = path.resolve(__dirname, "..");
 const POSTS_DIR = path.join(ROOT, "content", "posts");
 const BLOG_DIR = path.join(ROOT, "blog");
 const SITE = "https://mariposamentalwellness.com";
+const INFO = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "settings", "site.json"), "utf8"));
+const TEL = "+1" + INFO.phone.replace(/[^0-9]/g, "").replace(/^1/, "");
+const MAPQ = encodeURIComponent(`${INFO.streetAddress}, ${INFO.city}, ${INFO.state} ${INFO.zip}`).replace(/%20/g, "+");
 
 marked.setOptions({ mangle: false, headerIds: true });
 
@@ -64,10 +67,10 @@ const footer = () => `<footer>
       <div class="footer-logo">${BUTTERFLY}Mariposa Mental Wellness</div>
       <p>Trauma-informed therapy for adults working through anxiety, PTSD, and perfectionism in Mesa, AZ.</p>
       <p style="margin-top:14px;">Kayla Martinez, MS, LPC &middot; LPC-24196<br>Licensed in Arizona</p>
-      <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" target="_blank" rel="noopener" style="color:var(--amber);">@mariposamentalwellness</a></p>
+      <p style="margin-top:14px;"><a href="https://www.instagram.com/${INFO.instagram}" target="_blank" rel="noopener" style="color:var(--amber);">@${INFO.instagram}</a></p>
     </div>
     <div class="footer-col"><h5>Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/about/">About Kayla</a></li><li><a href="/services/">Services</a></li><li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+14806050846">(480) 605-0846</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">1845 S Dobson Rd, Ste 101</a></li><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd+Suite+101+Mesa+AZ" target="_blank" rel="noopener">Mesa, AZ 85202</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
+    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:${TEL}">${INFO.phone}</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=${MAPQ}" target="_blank" rel="noopener">${INFO.streetAddress}</a></li><li><a href="https://maps.google.com/?q=${MAPQ}" target="_blank" rel="noopener">${INFO.city}, ${INFO.state} ${INFO.zip}</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Mariposa Mental Wellness &middot; Kayla Martinez, MS, LPC</span><span>For emergencies call <a href="tel:988">988</a> or 911.</span><span class="site-credit">made with &hearts; by <a href="https://therapistweb.design" target="_blank" rel="noopener">chad</a></span></div>
 </footer>`;

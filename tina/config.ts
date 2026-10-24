@@ -24,7 +24,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "images/blog", // uploads land in /images/blog
+      mediaRoot: "images/uploads", // every upload from the editor lands in /images/uploads
       publicFolder: ".",
     },
   },
@@ -57,6 +57,31 @@ export default defineConfig({
           { type: "string", name: "tags", label: "Tags", list: true },
           { type: "string", name: "author", label: "Author" },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
+        ],
+      },
+      {
+        name: "photos",
+        label: "Site Photos",
+        path: "content/settings",
+        format: "json",
+        // One always-present record: swap any photo, save, and the site updates on the next publish.
+        ui: { global: true, allowedActions: { create: false, delete: false } },
+        match: { include: "photos" },
+        fields: [
+          { type: "image", name: "homeHero", label: "Home: top photo (computer)", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "homeHeroMobile", label: "Home: top photo (phones)", description: "Tall (portrait) photo, at least 800px across. Keep the main subject in the top third; the text sits over the bottom." },
+          { type: "image", name: "aboutHero", label: "About: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "servicesHero", label: "Services: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "mothersHero", label: "For Mothers: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "traumaHero", label: "Trauma Therapy: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "ifsHero", label: "IFS Therapy: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "emdrHero", label: "EMDR Therapy: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "faqHero", label: "FAQ: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "contactHero", label: "Contact: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "blogHero", label: "Blog: top photo", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
+          { type: "image", name: "kaylaPortrait", label: "Your portrait (About page)", description: "Portrait (tall) photo of you, at least 1000px across." },
+          { type: "image", name: "kaylaCandid", label: "Your candid photo (Home and About)", description: "A relaxed photo of you, wide or square, at least 1200px across." },
+          { type: "image", name: "mothersSection", label: "For Mothers: photo beside the intro", description: "Tall or square photo, at least 800px across." },
         ],
       },
       {

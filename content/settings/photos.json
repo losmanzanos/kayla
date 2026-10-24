@@ -1,0 +1,16 @@
+{
+  "homeHero": "/images/rd-butterfly-wide.jpg",
+  "homeHeroMobile": "/images/rd-butterfly-mobile.jpg",
+  "aboutHero": "/images/rd-about.jpg",
+  "servicesHero": "/images/rd-services.jpg",
+  "mothersHero": "/images/rd-mothers.jpg",
+  "traumaHero": "/images/rd-trauma.jpg",
+  "ifsHero": "/images/rd-ifs.jpg",
+  "emdrHero": "/images/rd-emdr.jpg",
+  "faqHero": "/images/rd-faq.jpg",
+  "contactHero": "/images/rd-contact.jpg",
+  "blogHero": "/images/rd-blog.jpg",
+  "kaylaPortrait": "/images/kayla.jpg",
+  "kaylaCandid": "/images/kayla-candid.jpg",
+  "mothersSection": "/images/rd-niche.jpg"
+}

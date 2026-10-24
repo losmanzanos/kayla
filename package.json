@@ -8,9 +8,10 @@
     "blog": "node scripts/build-blog.mjs",
     "siteinfo": "node scripts/build-site.mjs",
     "serve": "node scripts/serve.mjs",
-    "dev": "npm run blog && npm run siteinfo && npm run serve",
+    "dev": "npm run blog && npm run siteinfo && npm run photos && npm run serve",
     "tina": "tinacms dev -c \"node scripts/serve.mjs\"",
-    "build": "tinacms build && npm run blog && npm run siteinfo"
+    "build": "tinacms build && npm run blog && npm run siteinfo && npm run photos",
+    "photos": "node scripts/build-photos.mjs"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.0",

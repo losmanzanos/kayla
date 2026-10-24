@@ -33,7 +33,7 @@ function collectHtml(dir) {
     if (e.name === ".git" || e.name === "node_modules") continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out = out.concat(collectHtml(p));
-    else if (e.name.endsWith(".html")) out.push(p);
+    else if (e.name.endsWith(".html") || e.name === "llms.txt") out.push(p);
   }
   return out;
 }
@@ -63,6 +63,7 @@ for (const file of collectHtml(ROOT)) {
 
   // 4) Google Maps links
   s = s.replace(/(maps\.google\.com\/\?q=)[^"'&]+/g, `$1${mapsQuery}`);
+  s = s.replace(/(google\.com\/maps\?q=)[^"'&]+/g, `$1${mapsQuery}`);
 
   // 5) Instagram handle
   s = s.replace(/instagram\.com\/[A-Za-z0-9_.]+/g, "instagram.com/" + settings.instagram);
