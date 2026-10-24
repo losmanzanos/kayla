@@ -20,9 +20,22 @@ const applied = JSON.parse(fs.readFileSync(appliedPath, "utf8"));
 // --- derived values ---
 const digits = (settings.phone || "").replace(/[^0-9]/g, "");
 const phoneTel = "+1" + digits.replace(/^1/, "");
-const cityStateZip = `${settings.city}, ${settings.state} ${settings.zip}`;
-const streetNoComma = settings.streetAddress.replace(/,/g, "");
-const mapsQuery = encodeURIComponent(`${settings.streetAddress}, ${cityStateZip}`).replace(/%20/g, "+");
+const street = (settings.streetAddress || "").trim();
+const hasOffice = street !== "";            // blank street = no office yet: hide address, map, in-person lines
+const cityState = `${settings.city}, ${settings.state}`;
+const cityStateZip = `${cityState} ${settings.zip}`.trim();
+const fullAddress = hasOffice ? `${street}, ${cityStateZip}` : cityState;
+const mapsQuery = encodeURIComponent(fullAddress).replace(/%20/g, "+");
+
+// schema.org PostalAddress: street and ZIP only when there is an office
+const postal = { "@type": "PostalAddress" };
+if (hasOffice) postal.streetAddress = street.replace(/,/g, "");
+postal.addressLocality = settings.city;
+postal.addressRegion = settings.state;
+if (hasOffice && settings.zip) postal.postalCode = settings.zip;
+postal.addressCountry = "US";
+
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const jsonStr = (s) => s.replace(/"/g, '\\"');
@@ -30,7 +43,7 @@ const jsonStr = (s) => s.replace(/"/g, '\\"');
 function collectHtml(dir) {
   let out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === ".git" || e.name === "node_modules") continue;
+    if ([".git", "node_modules", "admin", "work"].includes(e.name)) continue;   // work/ holds other previews: never touch
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out = out.concat(collectHtml(p));
     else if (e.name.endsWith(".html") || e.name === "llms.txt") out.push(p);
@@ -46,8 +59,20 @@ for (const file of collectHtml(ROOT)) {
   // 1) Visible display text (old applied value -> new)
   if (applied.phoneDisplay) s = s.split(applied.phoneDisplay).join(settings.phone);
   if (applied.emailDisplay) s = s.split(applied.emailDisplay).join(settings.email);
-  for (const v of (applied.addrVariants || [])) s = s.split(v).join(settings.streetAddress);
-  if (applied.cityzipDisplay) s = s.split(applied.cityzipDisplay).join(cityStateZip);
+
+  // Address text lives in marked elements: <x data-site="street|cityzip|citystate|address">
+  const siteVals = { street, cityzip: cityStateZip, citystate: cityState, address: fullAddress };
+  s = s.replace(/(<([a-z0-9]+)\b[^>]*\bdata-site="(street|cityzip|citystate|address)"[^>]*>)[^<]*(<\/\2>)/g,
+    (m, open, tag, key, close) => open + esc(siteVals[key]) + close);
+
+  // Office on/off: show or hide blocks, and swap short lines of copy
+  s = s.replace(/(<[a-z0-9]+\b[^>]*?\bdata-office-show="(on|off)")((?:\s+hidden)?)(?=[\s>])/g,
+    (m, start, when) => start + ((when === "on") === hasOffice ? "" : " hidden"));
+  s = s.replace(/(<([a-z0-9]+)\b[^>]*\bdata-office-text-on="([^"]*)"[^>]*\bdata-office-text-off="([^"]*)"[^>]*>)[^<]*(<\/\2>)/g,
+    (m, open, tag, on, off, close) => open + (hasOffice ? on : off) + close);
+
+  // llms.txt office line
+  s = s.replace(/^Office: .*\. Phone: /m, hasOffice ? `Office: ${fullAddress}. Phone: ` : `Office: in-person location to be announced; sessions are virtual for now. Phone: `);
 
   // 2) Links (context-safe regex, no old value needed)
   s = s.replace(/tel:\+?\d{10,}/g, "tel:" + phoneTel);              // leaves tel:988 / tel:911 alone
@@ -56,10 +81,8 @@ for (const file of collectHtml(ROOT)) {
   // 3) JSON-LD structured data
   s = s.replace(/"telephone":"[^"]*"/g, `"telephone":"${jsonStr(settings.phone)}"`);
   s = s.replace(/"email":"[^"]*"/g, `"email":"${jsonStr(settings.email)}"`);
-  s = s.replace(/"streetAddress":"[^"]*"/g, `"streetAddress":"${jsonStr(streetNoComma)}"`);
-  s = s.replace(/"addressLocality":"[^"]*"/g, `"addressLocality":"${jsonStr(settings.city)}"`);
-  s = s.replace(/"addressRegion":"[^"]*"/g, `"addressRegion":"${jsonStr(settings.state)}"`);
-  s = s.replace(/"postalCode":"[^"]*"/g, `"postalCode":"${jsonStr(settings.zip)}"`);
+  s = s.replace(/"address":\{"@type":"PostalAddress"[^}]*\}/g, `"address":${JSON.stringify(postal)}`);
+  s = s.replace(/,"geo":\{[^}]*\}/g, "");   // fixed coordinates go stale when the address changes
 
   // 4) Google Maps links
   s = s.replace(/(maps\.google\.com\/\?q=)[^"'&]+/g, `$1${mapsQuery}`);
@@ -76,10 +99,8 @@ for (const file of collectHtml(ROOT)) {
 fs.writeFileSync(appliedPath, JSON.stringify({
   phoneDisplay: settings.phone,
   emailDisplay: settings.email,
-  addrVariants: [settings.streetAddress],
-  cityzipDisplay: cityStateZip,
 }, null, 2) + "\n");
 
 console.log(`Site info injected into ${changed} page(s).`);
 console.log(`   phone ${settings.phone} · ${phoneTel} | email ${settings.email}`);
-console.log(`   ${settings.streetAddress}, ${cityStateZip}`);
+console.log(`   ${hasOffice ? fullAddress : "no office yet (address and map hidden)"}`);

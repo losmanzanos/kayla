@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=6">
 <link rel="canonical" href="https://mariposamentalwellness.com/contact/">
 <meta property="og:title" content="Contact & Book a Free Consultation | Mariposa Mental Wellness">
-<meta property="og:description" content="Book a free 15-minute consultation with Kayla Martinez, MS, LPC in Mesa, AZ. In-person and virtual therapy for adults in Arizona.">
+<meta property="og:description" content="Book a free 15-minute consultation with Kayla Martinez, MS, LPC in Mesa, AZ. Therapy for adults anywhere in Arizona.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mariposamentalwellness.com/contact/">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://mariposamentalwellness.com/images/og/contact.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Mariposa Mental Wellness","url":"https://mariposamentalwellness.com","telephone":"(480) 605-0846","email":"mariposamentalwellness@gmail.com","address":{"@type":"PostalAddress","streetAddress":"1845 S Dobson Rd Suite 101","addressLocality":"Mesa","addressRegion":"AZ","postalCode":"85202","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":33.3795,"longitude":-111.8677},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"priceRange":"$165/session","hasMap":"https://maps.google.com/?q=1845+S+Dobson+Rd%2C+Suite+101%2C+Mesa%2C+AZ+85202"}
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Mariposa Mental Wellness","url":"https://mariposamentalwellness.com","telephone":"(602) 805-7017","email":"mariposamentalwellness@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Mesa","addressRegion":"AZ","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"priceRange":"$165/session","hasMap":"https://maps.google.com/?q=Mesa%2C+AZ"}
 </script>
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -88,7 +88,7 @@
       <div class="contact-form-wrap">
         <p class="eyebrow">Get in Touch</p>
         <h2 class="section-title" style="margin-bottom:12px;">Ready when <em>you are</em></h2>
-        <p class="body-text" style="margin-bottom:32px;">Fill out the form below and I'll respond within one business day. Not ready to fill out a form? You can also call or text <a href="tel:+14806050846" style="color:var(--olive);font-weight:600;">(480) 605-0846</a>.</p>
+        <p class="body-text" style="margin-bottom:32px;">Fill out the form below and I'll respond within one business day. Not ready to fill out a form? You can also call or text <a href="tel:+16028057017" style="color:var(--olive);font-weight:600;">(602) 805-7017</a>.</p>
 
         <form class="contact-form" id="contact-form" novalidate>
           <p class="hidden" style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -134,7 +134,7 @@
             <label for="session-type">Session preference</label>
             <select id="session-type" name="session_type">
               <option value="" disabled selected>In-person, virtual, or no preference?</option>
-              <option value="in-person">In-person (Mesa, AZ)</option>
+              <option value="in-person" data-office-text-on="In-person (Mesa, AZ)" data-office-text-off="In-person, once the office opens">In-person, once the office opens</option>
               <option value="virtual">Virtual / Telehealth (anywhere in AZ)</option>
               <option value="no-preference">No preference</option>
             </select>
@@ -167,7 +167,7 @@
           </div>
           <div>
             <strong>Call or Text</strong>
-            <a href="tel:+14806050846">(480) 605-0846</a>
+            <a href="tel:+16028057017">(602) 805-7017</a>
             <span class="ci-note">Weekdays 9am&ndash;6pm MST</span>
           </div>
         </div>
@@ -183,15 +183,26 @@
           </div>
         </div>
 
-        <div class="contact-info-card">
+        <div class="contact-info-card" data-office-show="off">
+          <div class="ci-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#7C6A0A" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <strong>Virtual Sessions</strong>
+            <span>Secure video, anywhere in Arizona</span>
+            <span class="ci-note">In-person office to be announced</span>
+          </div>
+        </div>
+
+        <div class="contact-info-card" data-office-show="on" hidden>
           <div class="ci-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="#7C6A0A" stroke-width="2"/></svg>
           </div>
           <div>
             <strong>In-Person Office</strong>
-            <span>1845 S Dobson Rd, Suite 101</span>
-            <span>Mesa, AZ 85202</span>
-            <a href="https://maps.google.com/?q=1845+S+Dobson+Rd%2C+Suite+101%2C+Mesa%2C+AZ+85202" target="_blank" rel="noopener" class="ci-map-link">Get Directions &rarr;</a>
+            <span data-site="street"></span>
+            <span data-site="cityzip">Mesa, AZ 85202</span>
+            <a href="https://maps.google.com/?q=Mesa%2C+AZ" target="_blank" rel="noopener" class="ci-map-link">Get Directions &rarr;</a>
           </div>
         </div>
 
@@ -226,11 +237,11 @@
 </section>
 
 <!-- Map / Location Section -->
-<section style="background:white;padding:0;">
+<section data-office-show="on" hidden style="background:white;padding:0;">
   <div class="map-embed">
     <iframe
       title="Map to the Mariposa Mental Wellness office"
-      src="https://www.google.com/maps?q=1845+S+Dobson+Rd%2C+Suite+101%2C+Mesa%2C+AZ+85202&output=embed"
+      src="https://www.google.com/maps?q=Mesa%2C+AZ&output=embed"
       width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
@@ -248,7 +259,7 @@
       <p style="margin-top:14px;"><a href="https://www.instagram.com/mariposamentalwellness" target="_blank" rel="noopener" style="color:var(--amber);">@mariposamentalwellness</a></p>
     </div>
     <div class="footer-col"><h5>Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/about/">About Kayla</a></li><li><a href="/services/">Services</a></li><li><a href="/therapy-for-mothers-mesa-az/">For Mothers</a></li><li><a href="/trauma-therapy-mesa-az/">Trauma Therapy</a></li><li><a href="/ifs-therapy-mesa-az/">IFS Therapy</a></li><li><a href="/emdr-therapy-mesa-az/">EMDR Therapy</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+14806050846">(480) 605-0846</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd%2C+Suite+101%2C+Mesa%2C+AZ+85202" target="_blank" rel="noopener">1845 S Dobson Rd, Suite 101</a></li><li><a href="https://maps.google.com/?q=1845+S+Dobson+Rd%2C+Suite+101%2C+Mesa%2C+AZ+85202" target="_blank" rel="noopener">Mesa, AZ 85202</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
+    <div class="footer-col"><h5>Get In Touch</h5><ul><li><a href="tel:+16028057017">(602) 805-7017</a></li><li><a href="/contact/">Send a message</a></li><li><a href="/contact/">Free 15-min consultation</a></li></ul><h5 style="margin-top:28px;">Location</h5><ul><li data-office-show="on" hidden><a href="https://maps.google.com/?q=Mesa%2C+AZ" target="_blank" rel="noopener" data-site="street"></a></li><li data-office-show="on" hidden><a href="https://maps.google.com/?q=Mesa%2C+AZ" target="_blank" rel="noopener" data-site="cityzip">Mesa, AZ 85202</a></li><li data-office-show="off"><a href="/contact/" data-site="citystate">Mesa, AZ</a></li><li><a href="/contact/">Virtual sessions, all of AZ</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 Mariposa Mental Wellness &middot; Kayla Martinez, MS, LPC</span><span>For emergencies call <a href="tel:988">988</a> or 911.</span><span class="site-credit">made with &hearts; by <a href="https://therapistweb.design" target="_blank" rel="noopener">chad</a></span></div>
 </footer>

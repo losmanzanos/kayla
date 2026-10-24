@@ -95,7 +95,7 @@ export default defineConfig({
         fields: [
           { type: "string", name: "phone", label: "Phone number", description: "As shown on the site, e.g. (480) 555-1234." },
           { type: "string", name: "email", label: "Contact email", description: "Where the contact form and 'Email' link point." },
-          { type: "string", name: "streetAddress", label: "Street address", description: "e.g. 123 W Main St, Suite 200. Leave your current one until the Mariposa office is set." },
+          { type: "string", name: "streetAddress", label: "Street address", description: "e.g. 123 W Main St, Suite 200. Leave this blank until you have an office: while it is blank, the site hides the address and map and says sessions are virtual. Fill it in and the address, map, and in-person wording come back." },
           { type: "string", name: "city", label: "City" },
           { type: "string", name: "state", label: "State", description: "Two-letter, e.g. AZ." },
           { type: "string", name: "zip", label: "ZIP code" },

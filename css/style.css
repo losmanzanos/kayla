@@ -1047,3 +1047,6 @@ h1, h2, h3, .hero-headline, .section-title, .page-hero h1, .cta-band h2, .statem
 
 .page-hero.hero-mothers { background-position:center 50%; }
 .page-hero.hero-services { background-position:center 50%; }
+
+/* Site Info: office on/off blocks are toggled with the hidden attribute at build time */
+[hidden] { display:none !important; }

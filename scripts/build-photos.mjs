@@ -27,7 +27,7 @@ const rel = (p) => String(p || "").replace(/^\/+/, "");
 function collect(dir) {
   let out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if ([".git", "node_modules", "admin", "content", "tina"].includes(e.name)) continue;
+    if ([".git", "node_modules", "admin", "content", "tina", "work"].includes(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out = out.concat(collect(p));
     else if (e.name.endsWith(".html") || e.name === "style.css") out.push(p);
