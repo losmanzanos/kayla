@@ -37,7 +37,6 @@ export default defineConfig({
         path: "content/posts",
         format: "md",
         ui: {
-          router: ({ document }) => `/blog/${document._sys.filename}/`,
           filename: {
             // auto-slug from the title
             slugify: (values) =>
@@ -65,7 +64,7 @@ export default defineConfig({
         path: "content/settings",
         format: "json",
         // One always-present record: swap any photo, save, and the site updates on the next publish.
-        ui: { global: true, allowedActions: { create: false, delete: false } },
+        ui: { allowedActions: { create: false, delete: false } },
         match: { include: "photos" },
         fields: [
           { type: "image", name: "homeHero", label: "Home: top photo (computer)", description: "Wide (landscape) photo, at least 1600px across. The headline sits on the left, so keep the main subject on the right half." },
@@ -91,7 +90,7 @@ export default defineConfig({
         path: "content/settings",
         format: "json",
         // A single, always-present record: no creating or deleting extra ones.
-        ui: { global: true, allowedActions: { create: false, delete: false } },
+        ui: { allowedActions: { create: false, delete: false } },
         match: { include: "site" },
         fields: [
           { type: "string", name: "phone", label: "Phone number", description: "As shown on the site, e.g. (480) 555-1234." },
