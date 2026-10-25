@@ -3,7 +3,7 @@
    Kayla Martinez, MS, LPC · Mesa, AZ
 ═══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300;0,400;1,300&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+/* Fonts (Petrona + Figtree) load from a <link> in each page's head, so they arrive sooner. */
 
 :root {
   --olive: #7C6A0A;
@@ -1070,4 +1070,39 @@ h1, .hero-headline, .page-hero h1 { font-weight:400 !important; }
 .page-hero-inner { position:relative; z-index:1; }
 @media (max-width:767px) {
   .page-hero::before { background:linear-gradient(to bottom, rgba(250,248,243,0.88) 0%, rgba(250,248,243,0.8) 55%, rgba(250,248,243,0.45) 100%) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   FINAL POLISH: calm motion, no jumps, phone-safe booking bar
+══════════════════════════════════════════════════════════ */
+/* Hero photo stays still (the slow zoom read as a stretch on phones) */
+.hero::before { animation:none !important; transform:none !important; }
+
+/* Nav keeps one height while scrolling; only the soft shadow changes */
+nav { transition:box-shadow .3s !important; }
+nav.scrolled { padding:18px 60px; }
+@media (max-width:1024px) { nav.scrolled { padding:16px 30px; } }
+@media (max-width:767px)  { nav.scrolled { padding:14px 20px; } }
+
+/* Scroll reveals: a gentle fade with a small lift (no big slide) */
+.reveal { transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
+@media (max-width:767px) { .reveal { transform:none; transition:opacity .5s ease; } }
+
+/* Touch screens: no hover lifts or zooms that stick after a tap */
+@media (hover:none) {
+  .service-card:hover, .blog-card:hover, .btn-primary:hover { transform:none; box-shadow:none; }
+  .blog-card:hover .blog-card-img img, .ig-grid:hover .ig-post img { transform:none; }
+}
+
+/* Booking bar: a floating rounded bar, inset from the screen's rounded corners */
+@media (max-width:767px) {
+  .book-bar { left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom, 0px));
+    padding:6px; gap:6px; border:1px solid rgba(124,106,10,0.16); border-radius:16px;
+    background:rgba(250,248,243,0.96); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(43,46,34,0.16);
+    transform:translateY(calc(100% + 28px + env(safe-area-inset-bottom, 0px))); }
+  .book-bar.show { transform:none; }
+  .book-bar a { border-radius:11px !important; padding:13px 10px; }
+  .book-bar .bb-call { border:1px solid rgba(124,106,10,0.28); background:#fff; }
+  body.has-book-bar footer { padding-bottom:120px; }
 }

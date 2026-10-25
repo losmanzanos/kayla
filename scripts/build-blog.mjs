@@ -96,6 +96,9 @@ const head = (r, { title, desc, canonical, image, jsonld }) => `<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${image}">
 ${[].concat(jsonld || []).map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n")}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300;0,400;1,300&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="${r}css/style.css">
 </head>
 <body>
@@ -183,7 +186,7 @@ fs.mkdirSync(BLOG_DIR, { recursive: true });
   </div>
 </section>
 <div class="cta-band">
-  <h2>Prefer to talk it through <em>in person?</em></h2>
+  <h2>Prefer to <em>talk it through?</em></h2>
   <p>A free 15-minute consultation is the first step. No pressure, just a conversation.</p>
   <div class="cta-band-links"><a href="/contact/" class="btn-white">Book a Consultation</a></div>
 </div>`;
