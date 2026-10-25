@@ -1011,9 +1011,13 @@ footer { background:#2B2E22; }
 .page-hero { border-bottom:1px solid var(--rule-light); }
 @media (max-width:767px) {
   /* Photo sits on top, fades to cream; copy starts below the butterfly instead of over it */
-  .hero { min-height:0 !important; padding:118vw 20px 60px !important; align-items:flex-start !important;
-    background:linear-gradient(to bottom, rgba(250,248,243,0) 0, rgba(250,248,243,0) 82vw, rgba(250,248,243,0.88) 110vw, #FAF8F3 124vw), url('../images/rd-butterfly-mobile.jpg') center -10vw/100% auto no-repeat, #FAF8F3 !important; }
-  .hero-inner { gap:24px !important; }
+  /* Compact: butterfly band on top, headline + intro + button all on the first screen */
+  .hero { min-height:0 !important; padding:73vw 20px 44px !important; align-items:flex-start !important;
+    background:linear-gradient(to bottom, rgba(250,248,243,0) 0, rgba(250,248,243,0) 58vw, rgba(250,248,243,0.9) 72vw, #FAF8F3 79vw), url('../images/rd-butterfly-mobile.jpg') center -37vw/100% auto no-repeat, #FAF8F3 !important; }
+  .hero-inner { gap:16px !important; }
+  .hero-headline { font-size:2.3rem !important; line-height:1.08 !important; }
+  .hero-right { padding-top:16px !important; gap:16px !important; }
+  .hero-right p { font-size:0.95rem !important; line-height:1.6 !important; }
   .page-hero.hero-about, .page-hero.hero-services, .page-hero.hero-women, .page-hero.hero-path, .page-hero.hero-journal,
   .page-hero.hero-leaves, .page-hero.hero-faq, .page-hero.hero-contact, .hero-blog {
     background-blend-mode:normal; }
@@ -1057,3 +1061,13 @@ h1, h2, h3, .hero-headline, .section-title, .page-hero h1, .cta-band h2, .statem
 /* Contact form: never wider than the phone (long select options were pushing it out) */
 .contact-layout > *, .form-row > *, .home-contact-grid > * { min-width:0; }
 .contact-form select, .contact-form input, .contact-form textarea { max-width:100%; width:100%; }
+
+/* Legibility: page titles in regular weight with a soft cream halo so they hold up over photos */
+h1, .hero-headline, .page-hero h1 { font-weight:400 !important; }
+.hero-headline, .page-hero h1 { color:#22251B !important; text-shadow:0 0 22px rgba(250,248,243,0.9), 0 0 3px rgba(250,248,243,0.7) !important; }
+.page-hero p { color:#3E4132 !important; }
+.page-hero { position:relative; }
+.page-hero-inner { position:relative; z-index:1; }
+@media (max-width:767px) {
+  .page-hero::before { background:linear-gradient(to bottom, rgba(250,248,243,0.88) 0%, rgba(250,248,243,0.8) 55%, rgba(250,248,243,0.45) 100%) !important; }
+}
