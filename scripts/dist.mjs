@@ -31,4 +31,19 @@ function copy(src, dest) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 copy(ROOT, OUT);
+
+// Cache-bust: stamp every page's CSS/JS links with this build's version, so phones
+// pick up design changes right away instead of holding yesterday's stylesheet.
+const VER = (process.env.CF_PAGES_COMMIT_SHA || Date.now().toString(36)).slice(0, 8);
+function stamp(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { if (e.name !== "admin") stamp(p); continue; }
+    if (!e.name.endsWith(".html")) continue;
+    const s = fs.readFileSync(p, "utf8");
+    const out = s.replace(/((?:style\.css|main\.js|form\.js))(?:\?v=[^"'&]*)?(["'])/g, `$1?v=${VER}$2`);
+    if (out !== s) fs.writeFileSync(p, out);
+  }
+}
+stamp(OUT);
 console.log(`dist/: ${files} files ready to publish.`);
