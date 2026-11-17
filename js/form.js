@@ -3,7 +3,9 @@ function sitePhone() {
   var a = document.querySelector('footer a[href^="tel:+"]');
   return a ? a.textContent.trim() : 'the number below';
 }
-/* Mariposa Mental Wellness, contact form handler (EmailJS)
+/* Mariposa Mental Wellness, contact form handler.
+   Primary: /api/contact (Cloudflare Pages Function + Resend, see functions/api/contact.js).
+   Backup: EmailJS below, used only if the primary path is down.
    ------------------------------------------------------------------
    SETUP (one-time, in the EmailJS dashboard at https://dashboard.emailjs.com):
      1. Create an Email Service (e.g. connect Kayla's inbox) → copy its SERVICE ID.
@@ -54,31 +56,35 @@ function sitePhone() {
     // Native validation
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
-    // Not configured yet, so guard here so nothing breaks in preview.
-    if (EMAILJS_CONFIG.serviceId.indexOf('YOUR_') === 0) {
-      setStatus('error', "The contact form isn't connected to EmailJS yet. Add your EmailJS keys in <code>js/form.js</code> to go live. (Everything else works.)");
-      return;
-    }
-
-    if (!initEmailJS()) {
-      setStatus('error', "Something went wrong loading the mailer. Please call or text " + sitePhone() + ".");
-      return;
-    }
-
     if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = 'Sending&hellip;'; }
     setStatus('', '');
 
-    window.emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form)
-      .then(function () {
-        form.reset();
-        setStatus('success', "Thank you for reaching out. Your message has been sent, and Kayla will get back to you within one business day.");
+    function ok() {
+      form.reset();
+      setStatus('success', "Thank you for reaching out. Your message has been sent, and Kayla will get back to you within one business day.");
+    }
+    function fail() {
+      setStatus('error', "Sorry, that didn't send. Please try again, or call or text " + sitePhone() + ".");
+    }
+    function reenable() { if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; } }
+    // Backup path: EmailJS, used only if /api/contact is down.
+    function viaEmailJS() {
+      if (!initEmailJS()) return Promise.reject(new Error('emailjs unavailable'));
+      return window.emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
+    }
+
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+    // Primary path: Cloudflare Pages Function + Resend
+    fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; }); },
+            function () { return { status: 0, body: {} }; })
+      .then(function (res) {
+        if (res.status === 200 && res.body.ok) { ok(); return; }
+        if (res.status === 400) { setStatus('error', res.body.error || 'Please check the form and try again.'); return; }
+        return viaEmailJS().then(ok, function (err) { console.error('Form send failed:', err); fail(); });
       })
-      .catch(function (err) {
-        console.error('EmailJS error:', err);
-        setStatus('error', "Sorry, that didn't send. Please try again, or call or text " + sitePhone() + ".");
-      })
-      .finally(function () {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitLabel; }
-      });
+      .then(reenable, reenable);
   });
 })();
